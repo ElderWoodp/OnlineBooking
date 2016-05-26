@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `onlinebooking` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `onlinebooking`;
 -- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: localhost    Database: onlinebooking
@@ -119,7 +117,7 @@ CREATE TABLE `hospital` (
   `describe` varchar(255) DEFAULT NULL,
   `picture` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,6 +126,7 @@ CREATE TABLE `hospital` (
 
 LOCK TABLES `hospital` WRITE;
 /*!40000 ALTER TABLE `hospital` DISABLE KEYS */;
+INSERT INTO `hospital` VALUES (1,'1','公立医院','1','1','1','1',1,'1','1','1');
 /*!40000 ALTER TABLE `hospital` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,17 +162,20 @@ DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(25) NOT NULL,
+  `userid` int(11) NOT NULL,
+  `username` varchar(20) DEFAULT NULL,
   `sex` enum('男','女') NOT NULL,
   `birth` varchar(25) NOT NULL,
   `telephone` int(11) DEFAULT NULL,
   `id_card` int(20) DEFAULT NULL,
-  `e-mail` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `password` varchar(50) DEFAULT NULL,
   `bank_card` int(20) DEFAULT NULL,
   `account` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `status` int(11) NOT NULL,
+  `validateCode` varchar(50) DEFAULT NULL,
+  `signupTime` date DEFAULT NULL,
+  PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -195,4 +197,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-25  2:22:19
+-- Dump completed on 2016-05-26 15:57:32
