@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-26 21:17:34 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="com.model.Booking" table="booking" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="uid" type="int">
+            <column name="uid" not-null="true" />
+        </property>
+        <property name="docId" type="int">
+            <column name="doc_id" not-null="true" />
+        </property>
+        <property name="visitTime" type="string">
+            <column name="visit_time" length="45" not-null="true" />
+        </property>
+        <property name="isOverdue" type="boolean">
+            <column name="is_overdue" not-null="true" />
+        </property>
+        <property name="number" type="int">
+            <column name="number" not-null="true" />
+        </property>
+        <property name="bookTime" type="timestamp">
+            <column name="book_time" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

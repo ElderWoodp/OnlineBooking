@@ -26,6 +26,11 @@
 		</property>
 		<property name="mappingResources">
 			<list>
+				<value>com/model/Booking.hbm.xml</value>
+				<value>com/model/Department.hbm.xml</value>
+				<value>com/model/Doctor.hbm.xml</value>
+				<value>com/model/Hospital.hbm.xml</value>
+				<value>com/model/HospitalDepartment.hbm.xml</value>
 				<value>com/model/User.hbm.xml</value>
 			</list>
 		</property>

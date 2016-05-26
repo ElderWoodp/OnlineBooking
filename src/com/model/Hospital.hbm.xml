@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-5-26 21:17:34 by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="com.model.Hospital" table="hospital" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="25" not-null="true" />
+        </property>
+        <property name="nature" type="string">
+            <column name="nature" length="5" not-null="true" />
+        </property>
+        <property name="region" type="string">
+            <column name="region" length="25" not-null="true" />
+        </property>
+        <property name="level" type="string">
+            <column name="level" length="25" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="25" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" not-null="true" />
+        </property>
+        <property name="telephone" type="java.lang.Integer">
+            <column name="telephone" />
+        </property>
+        <property name="web" type="string">
+            <column name="web" />
+        </property>
+        <property name="describe" type="string">
+            <column name="describe" />
+        </property>
+        <property name="picture" type="string">
+            <column name="picture" />
+        </property>
+    </class>
+</hibernate-mapping>
