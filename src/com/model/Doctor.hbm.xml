@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-5-26 21:17:34 by Hibernate Tools 5.1.0.Alpha1 -->
+<!-- Generated 2016-5-28 20:34:30 by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
     <class name="com.model.Doctor" table="doctor" optimistic-lock="version">
         <id name="id" type="int">
@@ -24,13 +24,16 @@
             <column name="hid" not-null="true" />
         </property>
         <property name="level" type="string">
-            <column name="level" length="25" not-null="true" />
+            <column name="level" length="25" />
         </property>
-        <property name="fee" type="int">
-            <column name="fee" not-null="true" />
+        <property name="fee" type="java.lang.Integer">
+            <column name="fee" />
         </property>
         <property name="scheduling" type="string">
-            <column name="scheduling" not-null="true" />
+            <column name="scheduling" />
+        </property>
+        <property name="picture" type="string">
+            <column name="picture" />
         </property>
     </class>
 </hibernate-mapping>

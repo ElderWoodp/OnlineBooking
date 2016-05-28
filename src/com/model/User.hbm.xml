@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2016-5-26 10:41:38 by Hibernate Tools 5.1.0.Alpha1 -->
+<!-- Generated 2016-5-28 20:34:30 by Hibernate Tools 5.1.0.Alpha1 -->
 <hibernate-mapping>
-    <class name="com.model.User" table="user" catalog="onlinebooking" optimistic-lock="version">
+    <class name="com.model.User" table="user" optimistic-lock="version">
         <id name="userid" type="int">
             <column name="userid" />
-            <generator class="increment" />
+            <generator class="assigned" />
         </id>
         <property name="username" type="string">
             <column name="username" length="20" not-null="true" />
