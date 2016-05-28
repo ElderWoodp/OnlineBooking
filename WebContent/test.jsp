@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<c:forEach var="hospital" items="${hospitals }">
 			<tr align="center"  height="24px">
 				<td width="100">${hospital.id}</td>
-				<td width="160">${hospital.name}</td>
+				<td width="160"><a href="test2.jsp?param=${hospital.name}">${hospital.name}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
