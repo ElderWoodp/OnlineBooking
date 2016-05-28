@@ -39,6 +39,10 @@
 			<result name="success">success.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="findHospital" class="FindHospitalAction">
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax_json" extends="json-default">

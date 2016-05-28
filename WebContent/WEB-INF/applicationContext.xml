@@ -81,4 +81,16 @@
 	<bean id="UpdatePasswordAction" class="com.action.UpdatePasswordAction">
 		<property name="userService" ref="userService"></property>
 	</bean>
+	
+	<bean id="hospitalDao" class="com.dao.HospitalDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="hospitalService" class="com.service.HospitalServiceImpl">
+		<property name="hospitalDao" ref="hospitalDao"></property>
+	</bean>
+	
+	<bean id="FindHospitalAction" class="com.action.FindHospitalAction">
+		<property name="hospitalService" ref="hospitalService"></property>
+	</bean>
 </beans>
