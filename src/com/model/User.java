@@ -1,6 +1,7 @@
 package com.model;
 // Generated 2016-5-28 20:34:30 by Hibernate Tools 5.1.0.Alpha1
 
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -25,6 +26,23 @@ public class User implements java.io.Serializable {
 	public User() {
 	}
 
+	public User(String username, String password, String email) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public User(String username, String password, String email,int status, String validateCode, Date signupTime) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.email = email;
+		this.status = status;
+		this.validateCode = validateCode;
+		this.signupTime = signupTime;
+	}
+	
 	public User(int userid, String username, String email, String password, int status, String validateCode,
 			Date signupTime) {
 		this.userid = userid;
@@ -155,6 +173,14 @@ public class User implements java.io.Serializable {
 
 	public void setSignupTime(Date signupTime) {
 		this.signupTime = signupTime;
+	}
+	
+	public Date getLastActivateTime() {
+		Calendar cl = Calendar.getInstance();
+		cl.setTime(signupTime);
+		cl.add(Calendar.DATE, 2);
+
+		return cl.getTime();
 	}
 
 }
