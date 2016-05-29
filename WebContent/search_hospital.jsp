@@ -133,9 +133,9 @@
 					name="findHospital" namespace="/"></s:action> <c:forEach
 					var="hospital" items="${hospitals }" begin="0" end="9"
 					varStatus="status" >
-					<c:if test="${status.last}">
-                    ${status.count}
-                    </c:if>
+<%-- 					<c:if test="${status.last}"> --%>
+<%--                     ${status.count} --%>
+<%--                     </c:if> --%>
 					<div class="left_img_big col-md-2">
 						<a href="http://www.91160.com/unit/show/uid-318.html"> <img
 							oncontextmenu="return(false);"
@@ -143,7 +143,7 @@
 					</div>
 					<div style="float: left;">
 						<h2 style="margin-top: 0px">
-							<a href="#">${hospital.name}</a><span>[${hospital.level}]
+							<a href="hospital.jsp?id=${hospital.id}">${hospital.name}</a><span>[${hospital.level}]
 							</span>
 						</h2>
 
@@ -165,7 +165,7 @@
 						aria-hidden="true">&laquo;</span>
 				</a></li>
 				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
+				<li id="page2"><a href="#">2</a></li>
 				<li><a href="#">3</a></li>
 				<li><a href="#">4</a></li>
 				<li><a href="#">5</a></li>
@@ -174,9 +174,8 @@
 			</ul>
 		</nav>
 	</div>
+	<!-- TODO:pagination -->
 	<script type="text/javascript">
-		
 	</script>
-
 </body>
 </html>
