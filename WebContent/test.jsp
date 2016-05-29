@@ -27,7 +27,7 @@
 		<c:forEach var="hospital" items="${hospitals }">
 			<tr align="center" height="24px">
 				<td width="100">${hospital.id}</td>
-				<td width="160"><a href="test2.jsp?param=${hospital.name}">${hospital.name}</a></td>
+				<td width="160"><a href="test2.jsp?abc=${hospital.id}">${hospital.name}</a></td>
 			</tr>
 		</c:forEach>
 	</table>
