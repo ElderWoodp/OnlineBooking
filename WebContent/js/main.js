@@ -118,7 +118,7 @@ function checkEmail(element){
 	var alert = "Your entered email has already been registered!";
 	if(email!=null && email!=""){
 		$.ajax({
-	        url:'/RegistrationAndLoginExample/userCheck',
+	        url:'/OnlineBooking/userCheck',
 	        data:{
 	             email : email ,
 	        },
@@ -146,7 +146,7 @@ function checkForm(emailID){
 	var email = document.getElementById(emailID).value;
 	if(email!=null && email!=""){
 		$.ajax({
-	        url:'/RegistrationAndLoginExample/userCheck',
+	        url:'/OnlineBooking/userCheck',
 	        data:{
 	             email : email ,
 	        },
