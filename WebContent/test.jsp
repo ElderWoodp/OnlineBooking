@@ -1,9 +1,10 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -20,10 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta http-equiv="description" content="This is my page">
 </head>
 <body>
-<s:action name="findHospital" namespace="/"></s:action>
-	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
+	<s:action name="findHospital" namespace="/"></s:action>
+	<table align="center" border="1" cellpadding="0" cellspacing="0"
+		bordercolor="#3366cc">
 		<c:forEach var="hospital" items="${hospitals }">
-			<tr align="center"  height="24px">
+			<tr align="center" height="24px">
 				<td width="100">${hospital.id}</td>
 				<td width="160"><a href="test2.jsp?param=${hospital.name}">${hospital.name}</a></td>
 			</tr>
