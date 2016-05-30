@@ -27,7 +27,7 @@
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
 					aria-expanded="false">选择城市 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu city">
 						<li><a href="#">广州</a></li>
 						<li><a href="#">佛山</a></li>
 						<li><a href="#">肇庆</a></li>
@@ -42,11 +42,19 @@
 				<button type="submit" class="btn btn-default">搜索</button>
 			</form>
 
-
+			<!-- user login state logic-->
 			<ul class="nav navbar-nav navbar-right nav-login">
-				<c:choose> 
+				<c:choose>
 					<c:when test="${not empty user}">
-						<li><a href="#"><s:property value="#session.user.email"/></a></li>
+						<!-- Single dropdown for user setting -->
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false"><s:property value="#session.user.email" />
+								<span class="caret"></span></a>
+							<ul class="dropdown-menu user-setting">
+								<li ><a href="userinfo.jsp">个人信息</a></li>
+								<li ><a href="#">退出登录</a></li>
+							</ul></li>						
 					</c:when>
 					<c:otherwise>
 						<li><a href="login.jsp">登录</a></li>
