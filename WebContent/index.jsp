@@ -150,7 +150,7 @@
 						<ul class="list-group col-md-4 ">
 							<li class="list-group-item"><span class="badge" style="background-color:green
 							;">${hospital.level}</span><a
-								href="#">${hospital.name}</a></li>
+								href="hospital.jsp?hid=${hospital.id}">${hospital.name}</a></li>
 						</ul>
 					</c:forEach>
 				</table>

@@ -48,8 +48,8 @@
 			<result name="error">test2.jsp</result>
 		</action>
 		<action name="findDepartmentByHospital" class="FindDepartmentByHospitalAction">
-			<result name="success">test.jsp</result>
-			<result name="error">test2.jsp</result>
+			<result name="success">hospital.jsp</result>
+			<result name="error">hospital.jsp</result>
 		</action>
 	</package>
 

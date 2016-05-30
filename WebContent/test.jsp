@@ -21,15 +21,13 @@
 <meta http-equiv="description" content="This is my page">
 </head>
 <body>
-	<%-- <s:action name="findHospitalByRegion" namespace="/">
+	<s:action name="findHospitalByRegion" namespace="/">
 		<s:param name="region" value="上海市"></s:param>
-	</s:action> --%>
-	<form action="findDepartmentByHospital" method="get" >
-	<input id="hid" name="hid" type="text">
-	<input type="submit">
-	</form>
+	</s:action>
+
 	fdfdsfaf
-	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
+	<table align="center" border="1" cellpadding="0" cellspacing="0"
+		bordercolor="#3366cc">
 		<c:forEach var="hospital" items="${hospitals }">
 			<tr align="center" height="24px">
 				<td width="100">${hospital.id}</td>
@@ -37,14 +35,19 @@
 				<td width="100">${hospital.region}</td>
 			</tr>
 		</c:forEach>
-	</table> 
-	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
+	</table>
+
+	<form action="findDepartmentByHospital" method="get">
+		<input id="hid" name="hid" type="text"> <input type="submit">
+	</form>
+	<table align="center" border="1" cellpadding="0" cellspacing="0"
+		bordercolor="#3366cc">
 		<c:forEach var="department" items="${departments }">
 			<tr align="center" height="24px">
 				<td width="100">${department.id}</td>
 				<td width="100">${department.name}</td>
 			</tr>
 		</c:forEach>
-	</table> 
+	</table>
 </body>
 </html>

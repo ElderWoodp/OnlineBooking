@@ -64,8 +64,9 @@
 		</div>
 		<!-- /.container-fluid -->
 	</nav>
+
 	<c:forEach var="hospital" items="${hospitals }">
-		<c:if test="${hospital.id == param.id}">
+		<c:if test="${hospital.id == param.hid}">
 
 			<!--hospital title-->
 			<div class="container ">
@@ -84,7 +85,6 @@
 						<div class="left_img_big col-md-7"
 							style="width: 250px; height: 230px">
 							<a href="http://www.91160.com/unit/show/uid-318.html"> <img
-								oncontextmenu="return(false);"
 								src="http://www.91160.com/static/v4/style/global/hospital_default.jpg"></a>
 						</div>
 						<div style="float: left; margin-left: 40px">
@@ -99,11 +99,11 @@
 
 							</div>
 						</div>
+					</li>
+				</ul>
+			</div>
 		</c:if>
 	</c:forEach>
-	</li>
-	</ul>
-	</div>
 
 	<!--department details-->
 	<div class="container">
@@ -123,22 +123,20 @@
 		</div>
 		<hr />
 	</div>
+
 	<!--nav-sort-->
 	<div class="container">
-		<ul class="list-group col-md-12 ">
-			<li class="list-group-item"><a href="#">Cras justo odio</a></li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-		</ul>
+		<s:action name="findDepartmentByHospital" namespace="/">
+			<s:param name="hid" value="#{param.hid}"></s:param>
+		</s:action>
+		<table>
+			<c:forEach var="department" items="${departments }">
+				<ul class="list-group col-md-3 ">
+					<!-- TODO:add href -->
+					<li class="list-group-item"><a href="#">${department.name}</a></li>
+				</ul>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>

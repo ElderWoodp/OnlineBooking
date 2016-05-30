@@ -143,7 +143,7 @@
 					</div>
 					<div style="float: left;">
 						<h2 style="margin-top: 0px">
-							<a href="hospital.jsp?id=${hospital.id}">${hospital.name}</a><span>[${hospital.level}]
+							<a href="hospital.jsp?hid=${hospital.id}">${hospital.name}</a><span>[${hospital.level}]
 							</span>
 						</h2>
 
