@@ -29,7 +29,7 @@
 						${hospital.name}<small>${hospital.level}</small>
 					</h1>
 				</div>
-			</div>
+			</div>		
 
 			<!--hospital details-->
 			<div class="container">
@@ -87,7 +87,8 @@
 			<c:forEach var="department" items="${departments }">
 				<ul class="list-group col-md-3 ">
 					<!-- TODO:add href -->
-					<li class="list-group-item"><a href="#">${department.name}</a></li>
+					<li class="list-group-item"><a href="department.jsp?hid=${param.hid}&depId=${department.id}">
+					${department.name}</a></li>
 				</ul>
 			</c:forEach>
 		</table>

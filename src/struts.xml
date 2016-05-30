@@ -52,11 +52,11 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findDepartmentByHospital" class="FindDepartmentByHospitalAction">
-			<result name="success">test.jsp</result>
+			<result name="success">hospital.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findDoctor" class="FindDoctorAction">
-			<result name="success">test.jsp</result>
+			<result name="success">department.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 	</package>
