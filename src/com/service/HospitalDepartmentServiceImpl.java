@@ -1,15 +1,17 @@
 package com.service;
 
+import java.util.List;
+
 import com.dao.HospitalDepartmentDao;
 import com.model.HospitalDepartment;
 
 public class HospitalDepartmentServiceImpl implements HospitalDepartmentService {
 	private HospitalDepartmentDao hospitalDepartmentDao;
 
-	public HospitalDepartment find(int id) {
-		HospitalDepartment hospitalDepartment = null;
-		hospitalDepartment = this.hospitalDepartmentDao.query(id);
-		return hospitalDepartment;
+	public List<HospitalDepartment> find(int hid) {
+		List<HospitalDepartment> hospitalDepartments = null;
+		hospitalDepartments = this.hospitalDepartmentDao.queryDep(hid);
+		return hospitalDepartments;
 	}
 
 	public void save(HospitalDepartment hospitalDepartment) {

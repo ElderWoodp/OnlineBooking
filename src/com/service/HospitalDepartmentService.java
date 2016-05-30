@@ -1,9 +1,11 @@
 package com.service;
 
+import java.util.List;
+
 import com.model.HospitalDepartment;
 
 public interface HospitalDepartmentService {
-	public HospitalDepartment find(int id);
+	public List<HospitalDepartment> find(int hid);
 
 	public void save(HospitalDepartment hospitalDepartment);
 

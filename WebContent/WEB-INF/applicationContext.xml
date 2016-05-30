@@ -93,4 +93,29 @@
 	<bean id="FindHospitalAction" class="com.action.FindHospitalAction">
 		<property name="hospitalService" ref="hospitalService"></property>
 	</bean>
+	
+	<bean id="FindHospitalByRegionAction" class="com.action.FindHospitalByRegionAction">
+		<property name="hospitalService" ref="hospitalService"></property>
+	</bean>
+	
+	<bean id="hospitalDepartmentDao" class="com.dao.HospitalDepartmentDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="hospitalDepartmentService" class="com.service.HospitalDepartmentServiceImpl">
+		<property name="hospitalDepartmentDao" ref="hospitalDepartmentDao"></property>
+	</bean>
+	
+	<bean id="departmentDao" class="com.dao.DepartmentDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="departmentService" class="com.service.DepartmentServiceImpl">
+		<property name="departmentDao" ref="departmentDao"></property>
+	</bean>
+	
+	<bean id="FindDepartmentByHospitalAction" class="com.action.FindDepartmentByHospitalAction">
+		<property name="hospitalDepartmentService" ref="hospitalDepartmentService"></property>
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
 </beans>

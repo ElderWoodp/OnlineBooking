@@ -7,9 +7,9 @@ import com.model.Department;
 public class DepartmentServiceImpl implements DepartmentService {
 	private DepartmentDao departmentDao;
 
-	public Department find(String name) {
+	public Department find(int id) {
 		Department department = null;
-		department = this.departmentDao.query(name);
+		department = this.departmentDao.query(id);
 		return department;
 	}
 

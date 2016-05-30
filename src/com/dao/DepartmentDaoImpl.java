@@ -18,9 +18,9 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		this.hibernateTemplate.save(department);
 	}
 
-	public Department query(String name) {
-		String hql = "from Department department where department.name=:n";
-		List<Department> departments = this.hibernateTemplate.findByNamedParam(hql, "n",name);
+	public Department query(int id) {
+		String hql = "from Department department where department.id=:n";
+		List<Department> departments = this.hibernateTemplate.findByNamedParam(hql, "n",id);
 		Department department = null;
 		if (departments != null && departments.size() > 0) {
 			department = departments.get(0);
@@ -38,7 +38,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
 	public Department update(Department department) {
 		this.hibernateTemplate.update(department);
-		return this.query(department.getName());
+		return this.query(department.getId());
 	}
 
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {

@@ -12,7 +12,9 @@ public interface HospitalDepartmentDao {
 	public HospitalDepartment update(HospitalDepartment hospitalDepartment);
 
 	public HospitalDepartment query(int id);
-
+	
+	public List<HospitalDepartment> queryDep(int hid);
+	
 	public List<HospitalDepartment> query();
 
 }

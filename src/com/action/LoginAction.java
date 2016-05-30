@@ -5,12 +5,12 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
 
+import com.model.User;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.util.ValueStack;
 import com.service.UserService;
 import com.util.MD5Util;
-import com.model.User;
 
 public class LoginAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;

@@ -25,20 +25,14 @@ public class HospitalDaoImpl implements HospitalDao {
 	@Override
 	public Hospital update(Hospital hospital) {
 		this.hibernateTemplate.update(hospital);
-		return this.query(hospital.getName());
+		return this.query(hospital.getRegion()).get(0);
 	}
 
 	@Override
-	public Hospital query(String name) {
-		String hql = "from Hospital hospital where hospital.name=:n";
-		List<Hospital> hospitals = this.hibernateTemplate.findByNamedParam(hql, "n",name);
-		Hospital hospital = null;
-		if (hospitals != null && hospitals.size() > 0) {
-			hospital = hospitals.get(0);
-		} else {
-			System.out.println("query():hospitals.size=" + hospitals.size());
-		}
-		return hospital;
+	public List<Hospital> query(String region) {
+		String hql = "from Hospital hospital where hospital.region=:n";
+		List<Hospital> hospitals = this.hibernateTemplate.findByNamedParam(hql, "n",region);
+		return hospitals;
 	}
 
 	@Override

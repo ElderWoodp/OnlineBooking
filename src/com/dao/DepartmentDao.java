@@ -11,7 +11,7 @@ public interface DepartmentDao {
 
 	public Department update(Department department);
 
-	public Department query(String department);
+	public Department query(int id);
 
 	public List<Department> query();
 

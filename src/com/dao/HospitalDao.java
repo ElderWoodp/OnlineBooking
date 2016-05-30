@@ -11,7 +11,7 @@ public interface HospitalDao {
 
 	public Hospital update(Hospital hospital);
 
-	public Hospital query(String hospital);
+	public List<Hospital> query(String region);
 
 	public List<Hospital> query();
 

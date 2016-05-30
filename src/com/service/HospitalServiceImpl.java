@@ -14,10 +14,10 @@ public class HospitalServiceImpl implements HospitalService {
 		return hospitals;
 	}
 
-	public Hospital find(String name) {
-		Hospital hospital = null;
-		hospital = this.hospitalDao.query(name);
-		return hospital;
+	public List<Hospital> find(String region) {
+		List<Hospital> hospitals = null;
+		hospitals = this.hospitalDao.query(region);
+		return hospitals;
 	}
 
 	public void save(Hospital hospital) {

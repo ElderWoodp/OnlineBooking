@@ -29,6 +29,12 @@ public class HospitalDepartmentDaoImpl implements HospitalDepartmentDao {
 		}
 		return hospitalDepartment;
 	}
+	
+	public List<HospitalDepartment> queryDep(int hid){
+		String hql = "from HospitalDepartment hospitalDepartment where hospitalDepartment.hid=:n";
+		List<HospitalDepartment> hospitalDepartment = this.hibernateTemplate.findByNamedParam(hql, "n",hid);
+		return hospitalDepartment;
+	}
 
 	public List<HospitalDepartment> query() {
 		String hql = "from HospitalDepartment hospitalDepartment";
@@ -38,7 +44,7 @@ public class HospitalDepartmentDaoImpl implements HospitalDepartmentDao {
 
 	public HospitalDepartment update(HospitalDepartment hospitalDepartment) {
 		this.hibernateTemplate.update(hospitalDepartment);
-		return this.query(hospitalDepartment.getId().getId());
+		return this.query(hospitalDepartment.getId());
 	}
 
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {

@@ -8,7 +8,7 @@ public interface HospitalService {
 	
 	public List<Hospital> find();
 	
-	public Hospital find(String name);
+	public List<Hospital> find(String region);
 
 	public void save(Hospital hospital);
 
