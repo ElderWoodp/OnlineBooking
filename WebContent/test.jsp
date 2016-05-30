@@ -26,11 +26,11 @@
 	<s:action name="findHospitalByRegion" namespace="/">
 		<s:param name="region" value="上海市"></s:param>
 	</s:action> --%>
-	<!-- <form action="findDepartmentByHospital" method="get" >
+	<%-- <form action="findDepartmentByHospital" method="get" >
 	<input id="hid" name="hid" type="text">
 	<input type="submit">
-	</form> -->
-	</s:action>
+	</form>
+	</s:action> --%>
 
 	fdfdsfaf
 	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
