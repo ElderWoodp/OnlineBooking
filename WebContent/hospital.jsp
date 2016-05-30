@@ -17,55 +17,10 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-default " role="navigation"
-		style="margin-bottom: 5px">
-		<div class="container">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-					aria-expanded="false">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#">Brand</a>
-			</div>
+	<%@include file="top-navigation.jsp"%>
 
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">找医院</a></li>
-					<li><a href="#">找科室</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">选择城市 <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">广州</a></li>
-							<li><a href="#">佛山</a></li>
-							<li><a href="#">肇庆</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="#">其他</a></li>
-						</ul></li>
-				</ul>
-				<form class="navbar-form navbar-left " role="search">
-					<div class="form-group ">
-						<input type="text" class="form-control " placeholder="搜索医院/科室">
-					</div>
-					<button type="submit" class="btn btn-default">搜索</button>
-				</form>
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">登录</a></li>
-				</ul>
-			</div>
-			<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-	</nav>
 	<c:forEach var="hospital" items="${hospitals }">
-		<c:if test="${hospital.id == param.id}">
+		<c:if test="${hospital.id == param.hid}">
 
 			<!--hospital title-->
 			<div class="container ">
@@ -84,7 +39,6 @@
 						<div class="left_img_big col-md-7"
 							style="width: 250px; height: 230px">
 							<a href="http://www.91160.com/unit/show/uid-318.html"> <img
-								oncontextmenu="return(false);"
 								src="http://www.91160.com/static/v4/style/global/hospital_default.jpg"></a>
 						</div>
 						<div style="float: left; margin-left: 40px">
@@ -99,11 +53,11 @@
 
 							</div>
 						</div>
+					</li>
+				</ul>
+			</div>
 		</c:if>
 	</c:forEach>
-	</li>
-	</ul>
-	</div>
 
 	<!--department details-->
 	<div class="container">
@@ -123,22 +77,20 @@
 		</div>
 		<hr />
 	</div>
+
 	<!--nav-sort-->
 	<div class="container">
-		<ul class="list-group col-md-12 ">
-			<li class="list-group-item"><a href="#">Cras justo odio</a></li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-			<li class="list-group-item">Cras justo odio</li>
-		</ul>
+		<s:action name="findDepartmentByHospital" namespace="/">
+			<s:param name="hid" value="#{param.hid}"></s:param>
+		</s:action>
+		<table>
+			<c:forEach var="department" items="${departments }">
+				<ul class="list-group col-md-3 ">
+					<!-- TODO:add href -->
+					<li class="list-group-item"><a href="#">${department.name}</a></li>
+				</ul>
+			</c:forEach>
+		</table>
 	</div>
 </body>
 </html>
