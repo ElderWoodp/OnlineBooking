@@ -21,13 +21,13 @@
 <meta http-equiv="description" content="This is my page">
 </head>
 <body>
-	<%-- <s:action name="findHospitalByRegion" namespace="/">
-		<s:param name="region" value="上海市"></s:param>
+	<%-- <s:action name="findDepartmentByHospital" namespace="/">
+		<s:param name="hid" value="1"></s:param>
 	</s:action> --%>
-	<form action="findDepartmentByHospital" method="get" >
+	<!-- <form action="findDepartmentByHospital" method="get" >
 	<input id="hid" name="hid" type="text">
 	<input type="submit">
-	</form>
+	</form> -->
 	fdfdsfaf
 	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
 		<c:forEach var="hospital" items="${hospitals }">
@@ -46,5 +46,26 @@
 			</tr>
 		</c:forEach>
 	</table> 
+	
+	<form action="findDoctor" method="get" >
+	<input id="hid" name="hid" type="text">
+	<input id="depId" name="depId" type="text">
+	<input type="submit">
+	</form>
+	<%-- <s:action name="findDoctor" namespace="/">
+		<s:param name="hid" value="1"></s:param>
+		<s:param name="depId" value="4"></s:param>
+	</s:action> --%>
+	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
+		<c:forEach var="doctor" items="${doctors }">
+			<tr align="center" height="24px">
+				<td width="100">${doctor.id}</td>
+				<td width="100">${doctor.name}</td>
+				<td width="100">${doctor.describe}</td>
+				<td width="100">${doctor.hid}</td>
+				<td width="100">${doctor.depId}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>

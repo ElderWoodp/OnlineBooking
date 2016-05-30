@@ -114,8 +114,24 @@
 		<property name="departmentDao" ref="departmentDao"></property>
 	</bean>
 	
+	<bean id="FindAllDepartmentAction" class="com.action.FindAllDepartmentAction">
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	
 	<bean id="FindDepartmentByHospitalAction" class="com.action.FindDepartmentByHospitalAction">
 		<property name="hospitalDepartmentService" ref="hospitalDepartmentService"></property>
 		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	
+	<bean id="doctorDao" class="com.dao.DoctorDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="doctorService" class="com.service.DoctorServiceImpl">
+		<property name="doctorDao" ref="doctorDao"></property>
+	</bean>
+	
+	<bean id="FindDoctorAction" class="com.action.FindDoctorAction">
+		<property name="doctorService" ref="doctorService"></property>
 	</bean>
 </beans>

@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import com.dao.DepartmentDao;
 import com.model.Department;
 
@@ -11,6 +13,12 @@ public class DepartmentServiceImpl implements DepartmentService {
 		Department department = null;
 		department = this.departmentDao.query(id);
 		return department;
+	}
+	
+	public List<Department> find(){
+		List<Department> departments = null;
+		departments = this.departmentDao.query();
+		return departments;
 	}
 
 	public void save(Department department) {

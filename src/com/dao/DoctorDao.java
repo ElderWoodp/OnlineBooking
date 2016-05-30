@@ -13,6 +13,6 @@ public interface DoctorDao {
 
 	public Doctor query(String name);
 
-	public List<Doctor> query();
+	public List<Doctor> query(int hid,int depId);
 
 }

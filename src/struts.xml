@@ -47,9 +47,17 @@
 			<result name="success">test.jsp</result>
 			<result name="error">test2.jsp</result>
 		</action>
+		<action name="findAllDepartment" class="FindAllDepartmentAction">
+			<result name="success">test.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<action name="findDepartmentByHospital" class="FindDepartmentByHospitalAction">
 			<result name="success">test.jsp</result>
-			<result name="error">test2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="findDoctor" class="FindDoctorAction">
+			<result name="success">test.jsp</result>
+			<result name="error">error.jsp</result>
 		</action>
 	</package>
 

@@ -1,9 +1,11 @@
 package com.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import com.dao.DoctorDao;
+
 import com.model.Doctor;
 
 
@@ -30,9 +32,11 @@ public class DoctorDaoImpl implements DoctorDao {
 		return doctor;
 	}
 
-	public List<Doctor> query() {
-		String hql = "from Doctor doctor";
-		List<Doctor> doctors = this.hibernateTemplate.find(hql);
+	public List<Doctor> query(int hid,int depId) {
+		String hql = "from Doctor doctor where doctor.hid=:hid and doctor.depId=:depId";
+		String[] paramName= new String[]{"hid", "depId"};
+		Integer[] value = new Integer[]{hid,depId};
+		List<Doctor> doctors = this.hibernateTemplate.findByNamedParam(hql, paramName, value);
 		return doctors;
 	}
 
