@@ -44,11 +44,19 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findHospitalByRegion" class="FindHospitalByRegionAction">
-			<result name="success">test.jsp</result>
+			<result name="success">index.jsp</result>
 			<result name="error">test2.jsp</result>
 		</action>
+		<action name="findHospitalById" class="FindHospitalByIdAction">
+			<result name="success">test2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 		<action name="findAllDepartment" class="FindAllDepartmentAction">
-			<result name="success">test.jsp</result>
+			<result name="success">index.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="findDepartmentById" class="FindDepartmentByIdAction">
+			<result name="success">test2.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findDepartmentByHospital" class="FindDepartmentByHospitalAction">

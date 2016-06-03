@@ -98,6 +98,10 @@
 		<property name="hospitalService" ref="hospitalService"></property>
 	</bean>
 	
+	<bean id="FindHospitalByIdAction" class="com.action.FindHospitalByIdAction">
+		<property name="hospitalService" ref="hospitalService"></property>
+	</bean>
+	
 	<bean id="hospitalDepartmentDao" class="com.dao.HospitalDepartmentDaoImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 	</bean>
@@ -115,6 +119,10 @@
 	</bean>
 	
 	<bean id="FindAllDepartmentAction" class="com.action.FindAllDepartmentAction">
+		<property name="departmentService" ref="departmentService"></property>
+	</bean>
+	
+	<bean id="FindDepartmentByIdAction" class="com.action.FindDepartmentByIdAction">
 		<property name="departmentService" ref="departmentService"></property>
 	</bean>
 	

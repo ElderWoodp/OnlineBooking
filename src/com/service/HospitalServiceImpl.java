@@ -8,6 +8,12 @@ import com.model.Hospital;
 public class HospitalServiceImpl implements HospitalService {
 	private HospitalDao hospitalDao;
 	
+	public Hospital find(int id){
+		Hospital hospital = null;
+		hospital = this.hospitalDao.query(id);
+		return hospital;
+	}
+	
 	public List<Hospital> find(){
 		List<Hospital> hospitals = null;
 		hospitals = this.hospitalDao.query();

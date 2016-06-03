@@ -10,6 +10,8 @@ public interface HospitalDao {
 	public void delete(Hospital hospital);
 
 	public Hospital update(Hospital hospital);
+	
+	public Hospital query(int id);
 
 	public List<Hospital> query(String region);
 

@@ -6,6 +6,8 @@ import com.model.Hospital;
 
 public interface HospitalService {
 	
+	public Hospital find(int id);
+	
 	public List<Hospital> find();
 	
 	public List<Hospital> find(String region);
