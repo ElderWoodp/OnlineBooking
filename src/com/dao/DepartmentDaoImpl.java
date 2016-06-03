@@ -25,7 +25,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
 		if (departments != null && departments.size() > 0) {
 			department = departments.get(0);
 		} else {
-			System.out.println("query():users.size=" + departments.size());
+			System.out.println("query():departments.size=" + departments.size());
 		}
 		return department;
 	}
