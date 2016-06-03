@@ -26,7 +26,7 @@
 	<form action="getOrderState" method="get">
 		<input id="docId" name="docId" type="text">
 		<input id="dayPart" name="dayPart" type="text">
-		<input id="dayOfWeek" name="weekDay" type="text">
+		<input id="dayOfWeek" name="dayOfWeek" type="text">
 		<input type="submit">
 	</form>
 	<c:forEach var="map" items="${maps }">

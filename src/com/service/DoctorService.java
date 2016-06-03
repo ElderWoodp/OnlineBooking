@@ -5,7 +5,7 @@ import java.util.List;
 import com.model.Doctor;
 
 public interface DoctorService {
-	public Doctor find(String name);
+	public Doctor find(int id);
 	
 	public List<Doctor> find(int hid,int depId);
 
