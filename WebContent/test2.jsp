@@ -22,5 +22,20 @@
 	</table>
 </c:if>
 </c:forEach>
+
+	<form action="getOrderState" method="get">
+		<input id="docId" name="docId" type="text">
+		<input id="dayPart" name="dayPart" type="text">
+		<input id="dayOfWeek" name="weekDay" type="text">
+		<input type="submit">
+	</form>
+	<c:forEach var="map" items="${maps }">
+		<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
+			<tr align="center"  height="24px">
+				<td width="100">${map.key}</td>
+				<td width="160">${map.value}</td>
+			</tr>
+		</table>
+	</c:forEach>
 </body>
 </html>

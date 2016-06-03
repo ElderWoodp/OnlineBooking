@@ -134,4 +134,8 @@
 	<bean id="FindDoctorAction" class="com.action.FindDoctorAction">
 		<property name="doctorService" ref="doctorService"></property>
 	</bean>
+	
+	<bean id="GetOrderStateAction" class="com.action.GetOrderStateAction">
+		<property name="doctorService" ref="doctorService"></property>
+	</bean>
 </beans>

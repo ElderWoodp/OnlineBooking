@@ -59,6 +59,10 @@
 			<result name="success">department.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="getOrderState" class="GetOrderStateAction">
+			<result name="success">test2.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax_json" extends="json-default">
