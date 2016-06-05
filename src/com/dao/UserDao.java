@@ -10,6 +10,8 @@ public interface UserDao {
 	public void delete(User user);
 
 	public User update(User user);
+	
+	public User query(int userid);
 
 	public User query(String username);
 

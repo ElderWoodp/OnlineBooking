@@ -6,6 +6,12 @@ import com.model.User;
 public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
+	public User find(int userid){
+		User user = null;
+		user = this.userDao.query(userid);
+		return user;
+	}
+	
 	public User find(String email) {
 		User user = null;
 		user = this.userDao.query(email);

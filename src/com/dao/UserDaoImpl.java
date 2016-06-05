@@ -15,6 +15,18 @@ public class UserDaoImpl implements UserDao {
 	public void insert(User user) {
 		this.hibernateTemplate.save(user);
 	}
+	
+	public User query(int userid){
+		String hql = "from User user where user.userid=:n";
+		List<User> users = this.hibernateTemplate.findByNamedParam(hql, "n",userid);
+		User user = null;
+		if (users != null && users.size() > 0) {
+			user = users.get(0);
+		} else {
+			System.out.println("query():users.size=" + users.size());
+		}
+		return user;
+	}
 
 	public User query(String email) {
 		String hql = "from User user where user.email=:n";
