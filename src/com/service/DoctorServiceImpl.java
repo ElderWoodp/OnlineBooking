@@ -8,9 +8,9 @@ import com.model.Doctor;
 public class DoctorServiceImpl implements DoctorService {
 	private DoctorDao doctorDao;
 
-	public Doctor find(String name) {
+	public Doctor find(int id) {
 		Doctor doctor = null;
-		doctor = this.doctorDao.query(name);
+		doctor = this.doctorDao.query(id);
 		return doctor;
 	}
 	
