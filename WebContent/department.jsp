@@ -90,8 +90,8 @@
 				</th>
 			</tr>
 			</thead>
-			
-				<script>
+
+			<script>
 			    <!-- set days of table  -->
 				function setOrderDate() {
 					$('.table-head').find('th').each(function() {
@@ -118,7 +118,7 @@
 				};
 				setOrderDate();						
 			    </script>
-    
+
 			<tbody>
 				<tr>
 					<td class="text-center" colspan="12"
@@ -182,36 +182,61 @@
 										});
 						return idx;
 					};
-					
+
+					//set order link
 					function setSchedule(timePart,ticket,dayOfWeek){
 						console.log(timePart+" "+ticket+" "+dayOfWeek);
 												
 						//confirm timePart is am or pm
 						if(timePart.substr(0, 2)<=11){//am
 							console.log("timePart: am");
-							if(ticket>0){//has ticket,show order link
+							if(ticket>0){//has ticket
 								console.log("ticket: "+ticket);
-
 								 var data_x=getDayOfWeekIndex(dayOfWeek);
-								 alert(data_x);
-								$("tr[class='am'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']').text("预约");
+								 var hrefEle=$("tr[class='am'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']');
+								 if(hrefEle.text().trim()==""){
+									 //show order link
+									 hrefEle.text("预约");
+									 }
+								 switch(timePart){
+								 case '09:00-10:00':
+									 hrefEle.attr("t09:00-10:00",ticket);
+									 break;
+								 case '10:00-11:00':
+									 hrefEle.attr("t10:00-11:00",ticket);
+									 break;
+								 case '11:00-12:00':
+									 hrefEle.attr("t11:00-12:00",ticket);
+									 break;
+								 }
+								 							 	
 // 								var tips[0][0]+=timePart+":剩"+ticket+"张票"+"\r\n";
-
-								//TODO:set a hidden frame about this tips and register a listener of onmouseover event
-								//to show this frame
 								}else{
 									//no ticket,don't show order link
 									}
 						}else{//pm
 							console.log("timePart: pm");
-							if(ticket>0){//has ticket,show order link
+							if(ticket>0){//has remaining ticket
 								console.log("ticket: "+ticket);
 								var data_x=getDayOfWeekIndex(dayOfWeek);
-								alert(data_x);
-								$("tr[class='pm'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']').text("预约");
+								var hrefEle2=$("tr[class='pm'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']');
+								if(hrefEle2.text().trim()==""){
+									//show order link
+									hrefEle2.text("预约");
+									}
+								switch(timePart){
+								 case '14:00-15:00':
+									 hrefEle2.attr("t14:00-15:00",ticket);
+									 break;
+								 case '15:00-16:00':
+									 hrefEle2.attr("t15:00-16:00",ticket);
+									 break;
+								 }
+// 								hrefEle2.attr(timePart+"",ticket+"");	
+// 								 hrefEle2.attr("data-time-periods",'{"'+timePart+'":"'+ticket+'"}');									
 // 								var tips[1][0]+=timePart+":剩"+ticket+"张票"+"\r\n";
 								}else{
-									//no ticket，don't show order link
+									//no remaining ticket，don't show order link
 									}
 							};
 						};
@@ -228,13 +253,11 @@
 				 			var timePart=arr[1];
 							var ticket=arr[2];
 
-							//(0,1,2,3,4,5,6)-->("周日","周一","周二","周三","周四","周五","周六")
 							setSchedule(timePart,ticket,dayOfWeek);
 					        }                      
 				 		};
 			 		
 					showOrder('${doctor.scheduling}');
-
 					</script>
 				</c:forEach>
 			</tbody>
@@ -282,27 +305,37 @@
 								</div>
 								<div class="btn-group-vertical " role="radiogroup">
 									<hr />
+									<div id="isAM">
 									<h4 class="">上午</h4>
 									<label class="radio-inline"> <input type="radio"
 										name="inlineRadioOptions" id="inlineRadio1" value="9:00-10:00">
-										9:00-10:00
-									</label> <label class="radio-inline"> <input type="radio"
+										9:00-10:00  剩余<span id="radio-period1"></span>  
+									</label>
+									
+									<label class="radio-inline"> <input type="radio"
 										name="inlineRadioOptions" id="inlineRadio2"
-										value="10:00-11:00"> 10:00-11:00
-									</label> <label class="radio-inline"> <input type="radio"
+										value="10:00-11:00"> 10:00-11:00 剩余<span id="radio-period2"></span>
+									</label>
+									 
+									<label class="radio-inline"> <input type="radio"
 										name="inlineRadioOptions" id="inlineRadio3"
-										value="11:00-12:00"> 11:00-12:00
+										value="11:00-12:00"> 11:00-12:00 剩余<span id="radio-period3"></span>
 									</label>
 									<hr />
-
+                                    </div>
+                                    
+                                    <div id="isPM">
 									<h4>下午</h4>
 									<label class="radio-inline"> <input type="radio"
 										name="inlineRadioOptions" id="inlineRadio4"
-										value="14:00-15:00"> 14:00-15:00
-									</label> <label class="radio-inline"> <input type="radio"
+										value="14:00-15:00"> 14:00-15:00 剩余<span id="radio-period4"></span>
+									</label> 
+									
+									<label class="radio-inline"> <input type="radio"
 										name="inlineRadioOptions" id="inlineRadio5"
-										value="15:00-16:00"> 15:00-16:00
+										value="15:00-16:00"> 15:00-16:00 剩余<span id="radio-period5"></span>
 									</label>
+									</div>
 								</div>
 							</form>
 						</div>
@@ -344,6 +377,46 @@
 														.getElementById("am_or_pm").innerHTML = am_pm == "am" ? "上午"
 														: "下午";
 
+												if(am_pm=="am"){
+													$("#isAM").css("display", "block");
+													$("#isPM").css("display", "none");
+													
+													if($(this).attr('t09:00-10:00')!=null){
+														document.getElementById("radio-period1").innerHTML=$(this).attr('t09:00-10:00');
+														}else{
+															$('input[id=inlineRadio1]').parent().css("display","none");
+															}
+													
+													if($(this).attr('t10:00-11:00')!=null){
+														document.getElementById("radio-period2").innerHTML=$(this).attr('t10:00-11:00');
+													}else{
+														$('input[id=inlineRadio2]').parent().css("display","none");
+													}
+													
+													if($(this).attr('t11:00-12:00')!=null){
+														document.getElementById("radio-period3").innerHTML=$(this).attr('t11:00-12:00');
+													}else{
+														$('input[id=inlineRadio3]').parent().css("display","none");
+													}
+													
+													
+												}else{
+													$("#isPM").css("display", "block");
+													$("#isAM").css("display", "none");
+													if($(this).attr('t14:00-15:00')!=null){
+														document.getElementById("radio-period4").innerHTML=$(this).attr('t14:00-15:00');
+													}else{
+														$('input[id=inlineRadio4]').parent().css("display","none");
+													}
+													
+													if($(this).attr('t15:00-16:00')!=null){
+														document.getElementById("radio-period5").innerHTML=$(this).attr('t15:00-16:00');
+													}else{
+														$('input[id=inlineRadio5]').parent().css("display","none");
+													}
+
+												}
+
 												//get date
 												var data_x = $(this).attr(
 														"data-x");
@@ -365,11 +438,9 @@
 												}
 
 												var date = getOrderDate(data_x);
-												var fullYear = new Date()
-														.getFullYear();
+												var fullYear = new Date().getFullYear();
 												date = fullYear + "/" + date;
-												document
-														.getElementById("visit_time").innerHTML = date;
+												document.getElementById("visit_time").innerHTML = date;
 
 												//show modal
 												$("#myModal").modal(options);
