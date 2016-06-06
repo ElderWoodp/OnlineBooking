@@ -1,5 +1,7 @@
 eclipse.preferences.version=1
 encoding//WebContent/department.jsp=UTF-8
+encoding//WebContent/expired_order.jsp=UTF-8
 encoding//WebContent/hospital.jsp=UTF-8
+encoding//WebContent/not_expired_order.jsp=UTF-8
 encoding//WebContent/search_hospital.jsp=UTF-8
 encoding/<project>=UTF-8

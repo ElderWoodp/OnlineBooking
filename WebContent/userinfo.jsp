@@ -45,12 +45,12 @@ prefix="s"%>
 					</div>
 				</div>
 				<a class="nav-header menu-first collapsed" data-toggle="collapse"><i
-					class="glyphicon glyphicon-shopping-cart"></i> 我的订单</a>
+					class="glyphicon glyphicon-shopping-cart"></i> 我的预约</a>
 				<ul id="orederMenu" class="nav nav-list menu-second "
 					style="height: auto;">
 					<li id="not-expired-order"><a href="#"><i class=""></i>
-							未过期订单</a></li>
-					<li id="expired-order"><a href="#"><i class=""></i> 过期订单</a></li>
+							未过期预约</a></li>
+					<li id="expired-order"><a href="#"><i class=""></i> 已过期预约</a></li>
 				</ul>
 				<hr />
 				<a class="nav-header menu-first collapsed" data-toggle="collapse"><i
@@ -70,7 +70,7 @@ prefix="s"%>
 				<!-- 16:9 aspect ratio -->
 				<div class="embed-responsive embed-responsive-16by9">
 					<iframe id="iframe" class="embed-responsive-item"
-						src="not_expired_order.html"></iframe>
+						src="not_expired_order.jsp"></iframe>
 				</div>
 			</div>
 			<!-- end right area-->
@@ -83,11 +83,11 @@ prefix="s"%>
     <!-- click listener about right area-->
     $("#not-expired-order").click(function (e) {
         e.preventDefault();
-        $("#iframe").attr('src',"not_expired_order.html");
+        $("#iframe").attr('src',"not_expired_order.jsp");
     });
     $("#expired-order").click(function (e) {
         e.preventDefault();
-        $("#iframe").attr('src',"expired_order.html");
+        $("#iframe").attr('src',"expired_order.jsp");
     });
     $("#account-setting").click(function (e) {
         e.preventDefault();

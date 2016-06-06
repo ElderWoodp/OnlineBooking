@@ -133,7 +133,7 @@
 
 
 					<tr class="am" data-doc-id="${doctor.id}"
-						data-doc-name="${doctor.name}">
+						data-doc-name="${doctor.name}" data-doc-fee="${doctor.fee}">
 						<td rowspan="2">${doctor.name}</td>
 						<td rowspan="2">${doctor.describe}</td>
 						<td rowspan="2"></td>
@@ -149,7 +149,7 @@
 						<td></td>
 					</tr>
 					<tr class="pm" data-doc-id="${doctor.id}"
-						data-doc-name="${doctor.name}">
+						data-doc-name="${doctor.name}" data-doc-fee="${doctor.fee}">
 						<td>下午</td>
 						<td><a href="#" class="order-time" data-x="0"></a></td>
 						<td><a href="#" class="order-time" data-x="1"></a></td>
@@ -301,40 +301,40 @@
 								<div class="order_pre_info">
 									<span class="">医生：</span><label id="doc_name" class="text-info"></label><br />
 									<span>预约日期：</span><label id="visit_time" class="text-info"></label><br />
+									<span>挂号费：</span><label id="doc_fee" class="text-info"></label><span>元</span><br />
 									<span>时间：</span><label id="am_or_pm" class="text-info"></label>
 								</div>
 								<div class="btn-group-vertical " role="radiogroup">
 									<hr />
 									<div id="isAM">
-									<h4 class="">上午</h4>
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio1" value="9:00-10:00">
-										9:00-10:00  剩余<span id="radio-period1"></span>  
-									</label>
-									
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio2"
-										value="10:00-11:00"> 10:00-11:00 剩余<span id="radio-period2"></span>
-									</label>
-									 
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio3"
-										value="11:00-12:00"> 11:00-12:00 剩余<span id="radio-period3"></span>
-									</label>
-									<hr />
-                                    </div>
-                                    
-                                    <div id="isPM">
-									<h4>下午</h4>
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio4"
-										value="14:00-15:00"> 14:00-15:00 剩余<span id="radio-period4"></span>
-									</label> 
-									
-									<label class="radio-inline"> <input type="radio"
-										name="inlineRadioOptions" id="inlineRadio5"
-										value="15:00-16:00"> 15:00-16:00 剩余<span id="radio-period5"></span>
-									</label>
+										<h4 class="">上午</h4>
+										<label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" id="inlineRadio1"
+											value="9:00-10:00"> 9:00-10:00 剩余<span
+											id="radio-period1"></span>
+										</label> <label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" id="inlineRadio2"
+											value="10:00-11:00"> 10:00-11:00 剩余<span
+											id="radio-period2"></span>
+										</label> <label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" id="inlineRadio3"
+											value="11:00-12:00"> 11:00-12:00 剩余<span
+											id="radio-period3"></span>
+										</label>
+										<hr />
+									</div>
+
+									<div id="isPM">
+										<h4>下午</h4>
+										<label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" id="inlineRadio4"
+											value="14:00-15:00"> 14:00-15:00 剩余<span
+											id="radio-period4"></span>
+										</label> <label class="radio-inline"> <input type="radio"
+											name="inlineRadioOptions" id="inlineRadio5"
+											value="15:00-16:00"> 15:00-16:00 剩余<span
+											id="radio-period5"></span>
+										</label>
 									</div>
 								</div>
 							</form>
@@ -363,6 +363,12 @@
 							$(".order-time")
 									.click(
 											function() {
+												//get doctor fee
+												var doc_fee = $(this).parent()
+														.parent()
+														.attr("data-doc-fee");
+												document.getElementById("doc_fee").innerHTML = doc_fee;
+												
 												//get doctor name
 												var doc_name = $(this).parent()
 														.parent()
@@ -398,8 +404,7 @@
 													}else{
 														$('input[id=inlineRadio3]').parent().css("display","none");
 													}
-													
-													
+																										
 												}else{
 													$("#isPM").css("display", "block");
 													$("#isAM").css("display", "none");
