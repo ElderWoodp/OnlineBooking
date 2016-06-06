@@ -13,13 +13,13 @@ public class Booking implements java.io.Serializable {
 	private int docId;
 	private String visitTime;
 	private boolean isOverdue;
-	private int number;
+	private String number;
 	private Date bookTime;
 
 	public Booking() {
 	}
 
-	public Booking(int id, int uid, int docId, String visitTime, boolean isOverdue, int number, Date bookTime) {
+	public Booking(int id, int uid, int docId, String visitTime, boolean isOverdue, String number, Date bookTime) {
 		this.id = id;
 		this.uid = uid;
 		this.docId = docId;
@@ -69,11 +69,11 @@ public class Booking implements java.io.Serializable {
 		this.isOverdue = isOverdue;
 	}
 
-	public int getNumber() {
+	public String getNumber() {
 		return this.number;
 	}
 
-	public void setNumber(int number) {
+	public void setNumber(String number) {
 		this.number = number;
 	}
 

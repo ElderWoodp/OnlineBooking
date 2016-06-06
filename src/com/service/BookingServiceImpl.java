@@ -1,5 +1,7 @@
 package com.service;
 
+import java.util.List;
+
 import com.dao.BookingDao;
 import com.model.Booking;
 
@@ -7,10 +9,16 @@ public class BookingServiceImpl implements BookingService {
 	private BookingDao bookingDao;
 
 	@Override
-	public Booking find(int uid) {
-		Booking booking = null;
-		booking = this.bookingDao.query(uid);
-		return booking;
+	public List<Booking> find(int uid) {
+		List<Booking> bookings = null;
+		bookings = this.bookingDao.query(uid);
+		return bookings;
+	}
+	
+	public List<Booking> find(){
+		List<Booking> bookings = null;
+		bookings = this.bookingDao.query();
+		return bookings;
 	}
 
 	@Override

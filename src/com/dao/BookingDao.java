@@ -10,8 +10,10 @@ public interface BookingDao {
 	public void delete(Booking booking);
 
 	public Booking update(Booking booking);
+	
+	public Booking queryById(int id);
 
-	public Booking query(int booking);
+	public List<Booking> query(int uid);
 
 	public List<Booking> query();
 

@@ -20,8 +20,8 @@
         <property name="isOverdue" type="boolean">
             <column name="is_overdue" not-null="true" />
         </property>
-        <property name="number" type="int">
-            <column name="number" not-null="true" />
+        <property name="number" type="string">
+            <column name="number" length="45" not-null="true" />
         </property>
         <property name="bookTime" type="timestamp">
             <column name="book_time" length="19" not-null="true" />

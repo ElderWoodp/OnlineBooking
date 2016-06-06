@@ -26,20 +26,26 @@ public class BookingDaoImpl implements BookingDao {
 	@Override
 	public Booking update(Booking booking) {
 		this.hibernateTemplate.update(booking);
-		return this.query(booking.getUid());
+		return this.queryById(booking.getId());
 	}
 
-	@Override
-	public Booking query(int uid) {
-		String hql = "from Booking booking where booking.uid:=n";
-		List<Booking> bookings = this.hibernateTemplate.findByNamedParam(hql, "n", uid);
+	public Booking queryById(int id){
+		String hql = "from Booking booking where booking.id:=n";
+		List<Booking> bookings = this.hibernateTemplate.findByNamedParam(hql, "n", id);
 		Booking booking = null;
-		if(bookings != null && bookings.size() >0){
+		if(bookings != null && bookings.size() > 0){
 			booking = bookings.get(0);
 		} else{
 			System.out.println("query():bookings.size=" + bookings.size());
 		}
-		return null;
+		return booking;
+	}
+	
+	@Override
+	public List<Booking> query(int uid) {
+		String hql = "from Booking booking where booking.uid:=n";
+		List<Booking> bookings = this.hibernateTemplate.findByNamedParam(hql, "n", uid);
+		return bookings;
 	}
 
 	@Override
