@@ -146,4 +146,18 @@
 	<bean id="GetOrderStateAction" class="com.action.GetOrderStateAction">
 		<property name="doctorService" ref="doctorService"></property>
 	</bean>
+	
+	<bean id="bookingDao" class="com.dao.BookingDaoImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"></property>
+	</bean>
+
+	<bean id="bookingService" class="com.service.BookingServiceImpl">
+		<property name="bookingDao" ref="bookingDao"></property>
+	</bean>
+	
+	<bean id="ConfirmOrderAction" class="com.action.ConfirmOrderAction">
+		<property name="doctorService" ref="doctorService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="bookingService" ref="bookingService"></property>
+	</bean>
 </beans>

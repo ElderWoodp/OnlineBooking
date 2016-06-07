@@ -19,6 +19,9 @@ public class ConfirmOrderAction extends ActionSupport {
 	private UserService userService;
 	private DoctorService doctorService;
 	private BookingService bookingService;
+	private int userId;
+	private int docId;
+	private String visitTime;
 	
 	@Override
 	public String execute() throws Exception {
@@ -28,9 +31,9 @@ public class ConfirmOrderAction extends ActionSupport {
 		int docId = (int)stack.findValue("docId");
 		String visitTime = (String)stack.findValue("visitTime");
 		
-		System.out.println("userId");
-		System.out.println("docId");
-		System.out.println("visitTime");
+		System.out.println(userId);
+		System.out.println(docId);
+		System.out.println(visitTime);
 		
 		if(userId > 0 && docId > 0 && visitTime != null){
 			User user = this.userService.find(userId);
@@ -41,6 +44,9 @@ public class ConfirmOrderAction extends ActionSupport {
 			String[] visitTimeParts = visitTime.split(" ");
 			String dayOfWeek = visitTimeParts[1];
 			String hour = visitTimeParts[2];
+			
+			System.out.println(dayOfWeek);
+			System.out.println(hour);
 			
 			//对用户表的账户进行模拟扣费
 			int fee = doctor.getFee();
@@ -78,6 +84,7 @@ public class ConfirmOrderAction extends ActionSupport {
 			}
 			
 			schedule = schedule.substring(0, schedule.length()-1);
+			System.out.println(schedule);
 			doctor.setScheduling(schedule);
 			this.doctorService.modify(doctor);
 			
@@ -130,6 +137,30 @@ public class ConfirmOrderAction extends ActionSupport {
 	
 	public void setBookingService(BookingService bookingService){
 		this.bookingService = bookingService;
+	}
+	
+	public int getUserId(){
+		return userId;
+	}
+	
+	public void setUserId(int userId){
+		this.userId = userId;
+	}
+	
+	public int getDocId(){
+		return docId;
+	}
+	
+	public void setDocId(int docId){
+		this.docId = docId;
+	}
+	
+	public String getVisitTime(){
+		return visitTime;
+	}
+	
+	public void setVisitTime(String visitTime){
+		this.visitTime = visitTime;
 	}
 
 }

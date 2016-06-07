@@ -67,6 +67,10 @@
 			<result name="success">department.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="confirmOrder" class="ConfirmOrderAction">
+			<result name="success">testAction.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax_json" extends="json-default">
