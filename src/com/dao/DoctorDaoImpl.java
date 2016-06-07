@@ -20,9 +20,9 @@ public class DoctorDaoImpl implements DoctorDao {
 		this.hibernateTemplate.save(doctor);
 	}
 
-	public Doctor query(int id) {
-		String hql = "from Doctor doctor where doctor.id=:n";
-		List<Doctor> doctors = this.hibernateTemplate.findByNamedParam(hql, "n",id);
+	public Doctor query(String name) {
+		String hql = "from Doctor doctor where doctor.name=:n";
+		List<Doctor> doctors = this.hibernateTemplate.findByNamedParam(hql, "n",name);
 		Doctor doctor = null;
 		if (doctors != null && doctors.size() > 0) {
 			doctor = doctors.get(0);
@@ -42,7 +42,7 @@ public class DoctorDaoImpl implements DoctorDao {
 
 	public Doctor update(Doctor doctor) {
 		this.hibernateTemplate.update(doctor);
-		return this.query(doctor.getId());
+		return this.query(doctor.getName());
 	}
 
 	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {

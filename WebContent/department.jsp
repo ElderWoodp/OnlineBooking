@@ -16,7 +16,7 @@
 <script src="js/jquery_1.11.3_jquery.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
-<link href="css/department.css" type="text/css" rel="stylesheet">
+<!-- <link href="css/department.css" type="text/css" rel="stylesheet"> -->
 </head>
 <body>
 	<!-- top nav -->
@@ -90,6 +90,35 @@
 				</th>
 			</tr>
 			</thead>
+			
+				<script>
+			    <!-- set days of table  -->
+				function setOrderDate() {
+					$('.table-head').find('th').each(function() {
+						var _this = $(this);
+						if (_this.attr('data-day-offset')) {
+							var time=new Date();
+							//must transform _this.attr('data-day-offset') to Number type
+							time.setDate(time.getDate()+(Number)(_this.attr('data-day-offset')));
+			
+							//month
+								var month=time.getMonth()+1;
+			
+								//day
+			 					var day=time.getDate();
+			
+								//day of week
+			 					var dayOfWeek_index=time.getDay();
+			                   //(0,1,2,3,4,5,6)-->("周日","周一","周二","周三","周四","周五","周六")
+			 					var dayOfWeek =new Array("周日","周一","周二","周三","周四","周五","周六");
+								
+							_this.text(month+"/"+day+" "+dayOfWeek[dayOfWeek_index]);
+						}
+					});
+				};
+				setOrderDate();						
+			    </script>
+    
 			<tbody>
 				<tr>
 					<td class="text-center" colspan="12"
@@ -98,45 +127,115 @@
 				</tr>
 
 				<c:forEach var="doctor" items="${doctors }">
-					<!-- <tr align="center" height="24px"> -->
-					<%-- 						<td width="100">${doctor.fee}</td> --%>
-					<%-- 						<td width="100">${doctor.scheduling}</td> --%>
-					<!-- </tr> -->
-					
-                    <!--TODO:delete this test string  -->
+
+					<!--TODO:delete this test string  -->
 					<c:out value="${doctor.scheduling}"></c:out>
-					
+
+
 					<tr class="am" data-doc-id="${doctor.id}"
 						data-doc-name="${doctor.name}">
 						<td rowspan="2">${doctor.name}</td>
 						<td rowspan="2">${doctor.describe}</td>
 						<td rowspan="2"></td>
 						<td>上午</td>
-						<script>
-						var scheduling=${doctor.scheduling};
-						var part=scheduling.split(",");
-						</script>
-						<td><a href="#" class="order-time" data-x="0">预约</a></td>
+						<!-- onmouseover="showScheduleTime('${doctor.scheduling}')" -->
+						<td><a href="#" class="order-time" data-x="0"></a></td>
 						<td><a href="#" class="order-time" data-x="1"></a></td>
-						<td><a href="#" class="order-time" data-x="2">预约</a></td>
+						<td><a href="#" class="order-time" data-x="2"></a></td>
 						<td><a href="#" class="order-time" data-x="3"></a></td>
 						<td><a href="#" class="order-time" data-x="4"></a></td>
-						<td><a href="#" class="order-time" data-x="5">预约</a></td>
+						<td><a href="#" class="order-time" data-x="5"></a></td>
 						<td><a href="#" class="order-time" data-x="6"></a></td>
 						<td></td>
 					</tr>
 					<tr class="pm" data-doc-id="${doctor.id}"
 						data-doc-name="${doctor.name}">
 						<td>下午</td>
-						<td><a href="#" class="order-time" data-x="0">预约</a></td>
+						<td><a href="#" class="order-time" data-x="0"></a></td>
 						<td><a href="#" class="order-time" data-x="1"></a></td>
 						<td><a href="#" class="order-time" data-x="2"></a></td>
 						<td><a href="#" class="order-time" data-x="3"></a></td>
 						<td><a href="#" class="order-time" data-x="4"></a></td>
-						<td><a href="#" class="order-time" data-x="5">预约</a></td>
+						<td><a href="#" class="order-time" data-x="5"></a></td>
 						<td><a href="#" class="order-time" data-x="6"></a></td>
 						<td></td>
 					</tr>
+
+					<script>
+					
+					//find the index of dayOfWeek
+					function getDayOfWeekIndex(dayOfWeek){
+						var idx = 0;
+						$('.table-head')
+								.find('th')
+								.each(function() {
+											var _this = $(this);
+											if(_this.attr('data-day-offset')){
+												var dayValue= $(_this).text().split(" ")[1];
+												if (dayValue==dayOfWeek) {													
+													return false;//jump out all loop
+												}else{
+													idx++;
+													return true;//jump out current loop,enter next loop
+													}
+												}
+										});
+						return idx;
+					};
+					
+					function setSchedule(timePart,ticket,dayOfWeek){
+						console.log(timePart+" "+ticket+" "+dayOfWeek);
+												
+						//confirm timePart is am or pm
+						if(timePart.substr(0, 2)<=11){//am
+							console.log("timePart: am");
+							if(ticket>0){//has ticket,show order link
+								console.log("ticket: "+ticket);
+
+								 var data_x=getDayOfWeekIndex(dayOfWeek);
+								 alert(data_x);
+								$("tr[class='am'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']').text("预约");
+// 								var tips[0][0]+=timePart+":剩"+ticket+"张票"+"\r\n";
+
+								//TODO:set a hidden frame about this tips and register a listener of onmouseover event
+								//to show this frame
+								}else{
+									//no ticket,don't show order link
+									}
+						}else{//pm
+							console.log("timePart: pm");
+							if(ticket>0){//has ticket,show order link
+								console.log("ticket: "+ticket);
+								var data_x=getDayOfWeekIndex(dayOfWeek);
+								alert(data_x);
+								$("tr[class='pm'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']').text("预约");
+// 								var tips[1][0]+=timePart+":剩"+ticket+"张票"+"\r\n";
+								}else{
+									//no ticket，don't show order link
+									}
+							};
+						};
+					
+											
+					function showOrder(scheduling){
+// 						alert(scheduling);
+				 		var part=scheduling.split(",");
+				
+				 		// a array to save order tips string
+				        for(var i=0;i<part.length;i++){
+				 			var arr=part[i].split(" ");
+				 			var dayOfWeek=arr[0];
+				 			var timePart=arr[1];
+							var ticket=arr[2];
+
+							//(0,1,2,3,4,5,6)-->("周日","周一","周二","周三","周四","周五","周六")
+							setSchedule(timePart,ticket,dayOfWeek);
+					        }                      
+				 		};
+			 		
+					showOrder('${doctor.scheduling}');
+
+					</script>
 				</c:forEach>
 			</tbody>
 		</table>
@@ -217,33 +316,6 @@
 		</div>
 	</div>
 
-	<!-- set days of table  -->
-	<script>
-		(function setOrderDate() {
-			$('.table-head').find('th').each(function() {
-				var _this = $(this);
-				if (_this.attr('data-day-offset')) {
-					var time=new Date();
-					//must transform _this.attr('data-day-offset') to Number type
-					time.setDate(time.getDate()+(Number)(_this.attr('data-day-offset')));
-
-					//month
- 					var month=time.getMonth()+1;
-
- 					//day
-  					var day=time.getDate();
-
- 					//day of week
-  					var dayOfWeek_index=time.getDay();
-                    //(0,1,2,3,4,5,6)-->("周日","周一","周二","周三","周四","周五","周六")
-  					var dayOfWeek =new Array("周日","周一","周二","周三","周四","周五","周六");
- 					
-					_this.text(month+"/"+day+" "+dayOfWeek[dayOfWeek_index]);
-				}
-			});
-		})();
-	</script>
-
 	<!-- script to toggle order dialog -->
 	<script>
 		//backdrop:static时,空白处不关闭.
@@ -314,6 +386,5 @@
 											});
 						});
 	</script>
-
 </body>
 </html>

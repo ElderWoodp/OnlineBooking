@@ -11,7 +11,7 @@ public interface DoctorDao {
 
 	public Doctor update(Doctor doctor);
 
-	public Doctor query(int id);
+	public Doctor query(String name);
 
 	public List<Doctor> query(int hid,int depId);
 
