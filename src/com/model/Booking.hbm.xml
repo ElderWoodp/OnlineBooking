@@ -24,7 +24,7 @@
             <column name="number" length="45" not-null="true" />
         </property>
         <property name="bookTime" type="timestamp">
-            <column name="book_time" length="19" not-null="true" />
+            <column name="book_time" length="19" />
         </property>
     </class>
 </hibernate-mapping>

@@ -8,7 +8,9 @@ public class Doctor implements java.io.Serializable {
 
 	private int id;
 	private String name;
-	private String describe;
+	private String introduction;
+	
+
 	private Integer telephone;
 	private int depId;
 	private int hid;
@@ -27,11 +29,11 @@ public class Doctor implements java.io.Serializable {
 		this.hid = hid;
 	}
 
-	public Doctor(int id, String name, String describe, Integer telephone, int depId, int hid, String level,
+	public Doctor(int id, String name, String introduction, Integer telephone, int depId, int hid, String level,
 			Integer fee, String scheduling, String picture) {
 		this.id = id;
 		this.name = name;
-		this.describe = describe;
+		this.introduction = introduction;
 		this.telephone = telephone;
 		this.depId = depId;
 		this.hid = hid;
@@ -57,14 +59,14 @@ public class Doctor implements java.io.Serializable {
 		this.name = name;
 	}
 
-	public String getDescribe() {
-		return this.describe;
+	public String getIntroduction() {
+		return introduction;
 	}
 
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
-
+	
 	public Integer getTelephone() {
 		return this.telephone;
 	}

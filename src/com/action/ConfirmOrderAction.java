@@ -13,6 +13,7 @@ import com.opensymphony.xwork2.util.ValueStack;
 import com.service.BookingService;
 import com.service.DoctorService;
 import com.service.UserService;
+import com.sun.jmx.snmp.Timestamp;
 
 public class ConfirmOrderAction extends ActionSupport {
 	private static final long serialVersionUID = 1L;
@@ -56,15 +57,14 @@ public class ConfirmOrderAction extends ActionSupport {
 			
 			int account = user.getAccount();
 			if(account >= fee){
-			user.setAccount(account - fee);
-			this.userService.modify(user);
+				user.setAccount(account - fee);
 			} else{
 				return ERROR;
 			}
 			
 			//对医生表中特定时间的放号数减一
 			String[] records = doctor.getScheduling().split(",");
-			String schedule = null;
+			String schedule = "";
 			for(int i = 0; i < records.length; i++){
 				String[] reParts = records[i].split(" ");
 				
@@ -86,12 +86,13 @@ public class ConfirmOrderAction extends ActionSupport {
 			schedule = schedule.substring(0, schedule.length()-1);
 			System.out.println(schedule);
 			doctor.setScheduling(schedule);
-			this.doctorService.modify(doctor);
+			
 			
 			//新添加一条订单记录
 			Date d = new Date();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
 			String date = formatter.format(d);
+			System.out.println(date);
 			int count = 0;
 			for(int i = 0; i < bookings.size(); i++){
 				String vt = bookings.get(i).getVisitTime();
@@ -102,17 +103,23 @@ public class ConfirmOrderAction extends ActionSupport {
 			}
 			count++;
 			String serialNum = String.valueOf(count);
+			Date bookDate = new Date();
 			
 			booking.setUid(userId);
 			booking.setDocId(docId);
 			booking.setVisitTime(visitTime);
 			booking.setIsOverdue(false);
 			booking.setNumber(serialNum);
+			booking.setBookTime(bookDate);
 			
+			this.userService.modify(user);
+			this.doctorService.modify(doctor);
 			this.bookingService.save(booking);
+			
+			return SUCCESS;
+		} else{
+			return ERROR;
 		}
-		
-		return ERROR;
 	}
 	
 	public UserService getUserService(){
