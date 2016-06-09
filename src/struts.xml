@@ -71,6 +71,10 @@
 			<result name="success">testAction.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="findOrders" class="FindOrdersAction">
+			<result name="success">testAction.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax_json" extends="json-default">

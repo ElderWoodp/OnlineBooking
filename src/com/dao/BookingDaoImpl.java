@@ -30,7 +30,7 @@ public class BookingDaoImpl implements BookingDao {
 	}
 
 	public Booking queryById(int id){
-		String hql = "from Booking booking where booking.id:=n";
+		String hql = "from Booking booking where booking.id=:n";
 		List<Booking> bookings = this.hibernateTemplate.findByNamedParam(hql, "n", id);
 		Booking booking = null;
 		if(bookings != null && bookings.size() > 0){
@@ -43,7 +43,7 @@ public class BookingDaoImpl implements BookingDao {
 	
 	@Override
 	public List<Booking> query(int uid) {
-		String hql = "from Booking booking where booking.uid:=n";
+		String hql = "from Booking booking where booking.uid=:n";
 		List<Booking> bookings = this.hibernateTemplate.findByNamedParam(hql, "n", uid);
 		return bookings;
 	}

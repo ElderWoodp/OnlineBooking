@@ -160,4 +160,12 @@
 		<property name="userService" ref="userService"></property>
 		<property name="bookingService" ref="bookingService"></property>
 	</bean>
+	
+	<bean id="FindOrdersAction" class="com.action.FindOrdersAction">
+		<property name="doctorService" ref="doctorService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="bookingService" ref="bookingService"></property>
+		<property name="departmentService" ref="departmentService"></property>
+		<property name="hospitalService" ref="hospitalService"></property>
+	</bean>
 </beans>
