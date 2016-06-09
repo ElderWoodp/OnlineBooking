@@ -103,6 +103,8 @@ public class ConfirmOrderAction extends ActionSupport {
 			}
 			count++;
 			String serialNum = String.valueOf(count);
+			int bookId = bookings.get(bookings.size()-1).getId() + 1;
+			serialNum = bookId + serialNum;
 			Date bookDate = new Date();
 			
 			booking.setUid(userId);
