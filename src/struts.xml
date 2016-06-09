@@ -75,6 +75,20 @@
 			<result name="success">testAction.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
+		<action name="updateOrderState" class="UpdateOrderStateAction">
+			<result name="success">testAction.jsp</result>
+		</action>
+		<action name="findAccount" class="FindAccountAction">
+			<result name="success">testAction.jsp</result>
+		</action>
+		<action name="deleteOrder" class="DeleteOrderAction">
+			<result name="success">testAction.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
+		<action name="unsubscribe" class="UnsubscribeAction">
+			<result name="success">testAction.jsp</result>
+			<result name="error">error.jsp</result>
+		</action>
 	</package>
 
 	<package name="ajax_json" extends="json-default">

@@ -168,4 +168,22 @@
 		<property name="departmentService" ref="departmentService"></property>
 		<property name="hospitalService" ref="hospitalService"></property>
 	</bean>
+	
+	<bean id="UpdateOrderStateAction" class="com.action.UpdateOrderStateAction">
+		<property name="bookingService" ref="bookingService"></property>
+	</bean>
+	
+	<bean id="FindAccountAction" class="com.action.FindAccountAction">
+		<property name="userService" ref="userService"></property>
+	</bean>
+	
+	<bean id="DeleteOrderAction" class="com.action.DeleteOrderAction">
+		<property name="bookingService" ref="bookingService"></property>
+	</bean>
+	
+	<bean id="UnsubscribeAction" class="com.action.UnsubscribeAction">
+		<property name="doctorService" ref="doctorService"></property>
+		<property name="userService" ref="userService"></property>
+		<property name="bookingService" ref="bookingService"></property>
+	</bean>
 </beans>
