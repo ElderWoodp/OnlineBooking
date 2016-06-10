@@ -2,8 +2,11 @@
 OnlineBooking是基于Struts2 + Hibernate + Spring的在线预约系统
 
 # PreView
-！[]()
-！[]()
+<img src="/art/index.jpg"/>
+<img src="/art/hospital.jpg"/>
+<img src="/art/department.jpg"/>
+<img src="/art/confirm_order.jpg"/>
+<img src="/art/userinfo.jpg"/>
 
 # Dev Tools and Technologies
 - IDE: Eclipse MAR2.0 + MySQL Workbench
@@ -62,4 +65,4 @@ File->Import->Existing Projects into Workspace->set root diretory->browser->...
 # Issue
 - #1[隐患]hospistal数据库表使用了describe保留字段，写操作会报错(虽然暂时没有写操作)
 - #2[缺陷]医生如果在当天有排班，即使预约时间已过期，仍然可以进行预约
-- #3断网情况下该项目无法部署运行，原因是：applicationContext.xml中spring版本http://www.springframework.org/schema/beans/spring-beans-3.0.xsd与jar包版本spring2.+不对应，必须联网更新schema
+- #3断网情况下该项目无法部署运行，原因是：applicationContext.xml中spring版本http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 与jar包版本spring2.+不对应，必须联网更新schema
