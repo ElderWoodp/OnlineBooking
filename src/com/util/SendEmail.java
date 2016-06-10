@@ -16,8 +16,8 @@ public class SendEmail {
     public static final String HOST = "smtp.126.com";
     public static final String PROTOCOL = "smtp";   
     public static final int PORT = 25;
-    public static final String FROM = "panguanchang@126.com";//from email
-    public static final String PWD = "5123527527";//from email password
+    public static final String FROM = "";//from email
+    public static final String PWD = "";//from email password
 
     private static Session getSession() {
         Properties props = new Properties();

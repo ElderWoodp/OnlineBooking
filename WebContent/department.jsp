@@ -131,7 +131,7 @@
 				<c:forEach var="doctor" items="${doctors }">
 
 					<!--TODO:delete this test string  -->
-					<!--<c:out value="${doctor.scheduling}"></c:out>  -->
+					<c:out value="${doctor.scheduling}"></c:out>  
 
 
 					<tr class="am" data-doc-id="${doctor.id}"
@@ -165,6 +165,19 @@
 
 					<script>
 					
+					//compare time segment,for example: 12:90 vs 12:00
+                    function compareTimeSegment(timePart){
+						 var curTime=new Date();
+						 var hour=curTime.getHours()<10?"0"+curTime.getHours():curTime.getHours();
+						 var minute=curTime.getMinutes()<10?"0"+curTime.getMinutes():curTime.getMinutes();
+
+						 var timeSeg=timePart.split("-")[1];
+						 var timeSeg_hour=timeSeg.split(":")[0];
+						 var timeSeg_minute=timeSeg.split(":")[1];
+
+						 return timeSeg_hour > hour;
+                        }
+					
 					//find the index of dayOfWeek
 					function getDayOfWeekIndex(dayOfWeek){
 						var idx = 0;
@@ -188,10 +201,11 @@
 					//set order link
 					function setSchedule(timePart,ticket,dayOfWeek){
 						console.log(timePart+" "+ticket+" "+dayOfWeek);
-												
+												 
 						//confirm timePart is am or pm
 						if(timePart.substr(0, 2)<=11){//am
 							console.log("timePart: am");
+							console.log(compareTimeSegment(timePart));
 							if(ticket>0){//has ticket
 
 								//TODO:add judge timePart logic to isOverdue 
@@ -220,6 +234,7 @@
 									}
 						}else{//pm
 							console.log("timePart: pm");
+							console.log(compareTimeSegment(timePart));
 							if(ticket>0){//has remaining ticket
 								console.log("ticket: "+ticket);
 								var data_x=getDayOfWeekIndex(dayOfWeek);

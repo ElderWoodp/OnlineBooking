@@ -21,7 +21,7 @@
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+				<li class="active"><a href="index.jsp">首页 <span class="sr-only">(current)</span></a></li>
 				<li><a href="search_hospital.jsp" target="_blank">找医院</a></li>
 				<li><a href="#">找科室</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"

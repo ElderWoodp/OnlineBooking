@@ -40,19 +40,19 @@
 				<!-- Wrapper for slides -->
 				<div class="carousel-inner " role="listbox">
 					<div class="item active">
-						<img src="img/1429070197235174.jpg" width="500px" height="300px"
+						<img src="img/1459.JPG" width="500px" height="300px"
 							alt="...">
 
 						<div class="carousel-caption">123</div>
 					</div>
 					<div class="item">
-						<img src="img/20140810202653_ytjLB.png" width="500px"
+						<img src="img/1493.JPG" width="500px"
 							height="300px" alt="...">
 
 						<div class="carousel-caption">456</div>
 					</div>
 					<div class="item">
-						<img src="img/20140810211102_8aC8w.png" width="500px"
+						<img src="img/279759ee3d6d55fba9755ab36c224f4a21a4ddf7.jpg" width="500px"
 							height="300px" alt="...">
 
 						<div class="carousel-caption">789</div>
