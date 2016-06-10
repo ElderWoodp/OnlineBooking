@@ -48,7 +48,7 @@
 			<result name="error">test2.jsp</result>
 		</action>
 		<action name="findHospitalById" class="FindHospitalByIdAction">
-			<result name="success">test2.jsp</result>
+			<result name="success">XXXXXXX.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findAllDepartment" class="FindAllDepartmentAction">
@@ -56,7 +56,7 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findDepartmentById" class="FindDepartmentByIdAction">
-			<result name="success">test2.jsp</result>
+			<result name="success">XXXXXXX.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findDepartmentByHospital" class="FindDepartmentByHospitalAction">
@@ -68,25 +68,25 @@
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="confirmOrder" class="ConfirmOrderAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">userinfo.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="findOrders" class="FindOrdersAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">userinfo.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="updateOrderState" class="UpdateOrderStateAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">userinfo.jsp</result>
 		</action>
 		<action name="findAccount" class="FindAccountAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">wallet.jsp</result>
 		</action>
 		<action name="deleteOrder" class="DeleteOrderAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">expired_order.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 		<action name="unsubscribe" class="UnsubscribeAction">
-			<result name="success">testAction.jsp</result>
+			<result name="success">not_expired_order.jsp</result>
 			<result name="error">error.jsp</result>
 		</action>
 	</package>

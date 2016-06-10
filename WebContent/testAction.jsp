@@ -9,7 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<!-- test confirmOrderAction -->
+
+	<%-- 	<!-- test confirmOrderAction -->
 	 
 	<form action="confirmOrder" method="get">
 		<input id="userId" name="userId" type="text"> 
@@ -20,7 +21,7 @@
 	
 	
 	<!-- test findOrdersAction -->
-	<%-- <form action="findOrders" method="get">
+	 <form action="findOrders" method="get">
 		<input id="userId" name="userId" type="text">
 		<input type="submit">
 	</form>
@@ -39,24 +40,18 @@
 				<td width="100">${order.departmentName}</td>
 			</tr>
 		</table>
-	</c:forEach> --%>
-	
+	</c:forEach>  --%>
+
 	<!-- test updateOrderStateAction and findAccountAction-->
-	<%-- <s:action name="updateOrderState" namespace="/"></s:action>
-	<s:action name="findAccount" namespace="/">
-		<s:param name="userId" value="1"></s:param>
-	</s:action>
-	<table align="center" border="1" cellpadding="0" cellspacing="0" bordercolor="#3366cc">
-			<tr align="center"  height="24px">
-				<td width="100">${account}</td>
-			</tr>
-	</table> --%>
+	<%-- <s:action name="updateOrderState" namespace="/"></s:action> %-->
+	
+
 	
 	<!-- test deleteOrderAction -->
 	<%-- <s:action name="deleteOrder" namespace="/">
 		<s:param name="bookingId" value="3"></s:param>
 	</s:action> --%>
-	
+
 	<!-- test unsubscribeAction -->
 	<%-- <s:action name="unsubscribe" namespace="/">
 		<s:param name="bookingId" value="6"></s:param>

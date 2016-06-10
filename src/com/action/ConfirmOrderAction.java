@@ -31,7 +31,7 @@ public class ConfirmOrderAction extends ActionSupport {
 		int userId = (int)stack.findValue("userId");
 		int docId = (int)stack.findValue("docId");
 		String visitTime = (String)stack.findValue("visitTime");
-		visitTime = "2016/06/14 周二 15:00-16:00";
+//		visitTime = "2016/06/14 周二 15:00-16:00";
 		
 		System.out.println(userId);
 		System.out.println(docId);

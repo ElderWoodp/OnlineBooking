@@ -103,9 +103,11 @@
 			
 							//month
 								var month=time.getMonth()+1;
+								month=month<10?("0"+month):month;//add prefix zero
 			
 								//day
 			 					var day=time.getDate();
+			 					day=day<10?("0"+day):day;//add prefix zero
 			
 								//day of week
 			 					var dayOfWeek_index=time.getDay();
@@ -135,7 +137,7 @@
 					<tr class="am" data-doc-id="${doctor.id}"
 						data-doc-name="${doctor.name}" data-doc-fee="${doctor.fee}">
 						<td rowspan="2">${doctor.name}</td>
-						<td rowspan="2">${doctor.describe}</td>
+						<td rowspan="2">${doctor.introduction}</td>
 						<td rowspan="2"></td>
 						<td>上午</td>
 						<!-- onmouseover="showScheduleTime('${doctor.scheduling}')" -->
@@ -295,12 +297,13 @@
 					<div class="modal-body">
 						<div class="container">
 							<!-- TODO: solve action path-->
-							<form method="post" action="index.php&id=?" class="form-group"
+							<form method="get" class="form-group"
 								role="form">
 								<!--show doctor info; current date; morning or afternoon -->
 								<div class="order_pre_info">
+								    <label id="docId" class="hidden"></label>
 									<span class="">医生：</span><label id="doc_name" class="text-info"></label><br />
-									<span>预约日期：</span><label id="visit_time" class="text-info"></label><br />
+									<span>预约日期：</span><label id="visitTime" class="text-info"></label><br />
 									<span>挂号费：</span><label id="doc_fee" class="text-info"></label><span>元</span><br />
 									<span>时间：</span><label id="am_or_pm" class="text-info"></label>
 								</div>
@@ -310,7 +313,7 @@
 										<h4 class="">上午</h4>
 										<label class="radio-inline"> <input type="radio"
 											name="inlineRadioOptions" id="inlineRadio1"
-											value="9:00-10:00"> 9:00-10:00 剩余<span
+											value="09:00-10:00"> 9:00-10:00 剩余<span
 											id="radio-period1"></span>
 										</label> <label class="radio-inline"> <input type="radio"
 											name="inlineRadioOptions" id="inlineRadio2"
@@ -341,8 +344,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-primary" id="submit-order">确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>						
+						<button type="button" class="btn btn-primary"  id="submit-order" >确定</button>
 					</div>
 				</div>
 			</div>
@@ -363,6 +366,12 @@
 							$(".order-time")
 									.click(
 											function() {
+												//get doctor fee
+												var docId = $(this).parent()
+														.parent()
+														.attr("data-doc-id");
+												document.getElementById("docId").innerHTML = docId;
+												
 												//get doctor fee
 												var doc_fee = $(this).parent()
 														.parent()
@@ -445,21 +454,61 @@
 												var date = getOrderDate(data_x);
 												var fullYear = new Date().getFullYear();
 												date = fullYear + "/" + date;
-												document.getElementById("visit_time").innerHTML = date;
+												document.getElementById("visitTime").innerHTML = date;
 
 												//show modal
 												$("#myModal").modal(options);
 
 											});
 
-							$("#submit-order")
-									.click(
+ 							$("#submit-order")
+ 									.click(
 											function() {
-												var time = $(
-														".radio-inline input:radio:checked")
-														.val();
-												alert(time);
-											});
+                                                var docId=$("#docId").text();
+												
+												var time = $(".radio-inline input:radio:checked").val();
+ 												var visitTime = $("#visitTime").text()+" "+time;
+
+ 												alert("${user.userid}"+docId+"\n"+visitTime); 
+ 												if("${user!=null}"){
+ 												var turnForm = document.createElement("form");   
+ 												 //一定要加入到body中！！   
+ 												 document.body.appendChild(turnForm);
+ 												 turnForm.method = 'get';
+ 												 turnForm.action = 'confirmOrder';
+ 												 turnForm.target = '_blank'; 
+ 												 //创建隐藏表单
+ 												var userIdArea = document.createElement("input");
+ 												    userIdArea.setAttribute("name","userId");
+ 												   userIdArea.setAttribute("id","userId");
+ 												  userIdArea.setAttribute("type","hidden");
+ 												 userIdArea.setAttribute("value","${user.userid}");
+ 											        turnForm.appendChild(userIdArea);
+ 											        
+ 	 											var docIdArea = document.createElement("input");
+ 	 											docIdArea.setAttribute("id","docId");
+ 	 											docIdArea.setAttribute("name","docId");
+ 	 											docIdArea.setAttribute("type","hidden");
+ 	 											docIdArea.setAttribute("value",docId);
+  											        turnForm.appendChild(docIdArea);
+  											        
+	 	 										var visitTimeArea = document.createElement("input");
+	 	 										visitTimeArea.setAttribute("id","visitTime");
+	 	 										visitTimeArea.setAttribute("name","visitTime");
+	 	 										visitTimeArea.setAttribute("type","hidden");
+	 	 										visitTimeArea.setAttribute("value",visitTime);
+											        turnForm.appendChild(visitTimeArea);
+  											        												   												 
+ 												    turnForm.submit();
+ 												    
+ 												}else{
+                                                       //jump to login.jsp
+ 	 												}
+
+ 												//hide modal
+ 											    $('#myModal').modal('hide');
+												 											
+ 											 }); 
 						});
 	</script>
 </body>

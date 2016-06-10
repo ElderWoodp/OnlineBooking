@@ -22,6 +22,11 @@
 		</div>
 	</div>
 
+	<!-- findOrdersAction -->
+	<s:action name="findOrders" namespace="/">
+		<s:param name="userId" value="#{user.userid}"></s:param>
+	</s:action>
+	
 	<div class="container-fluid">
 		<table class="table table-hover table-bordered">
 			<thead>
@@ -38,19 +43,22 @@
 				</tr>
 			</thead>
 			<tbody>
+			   <!-- session also have ${order.hospitalName},here don't show it-->
+			   <c:forEach var="order" items="${orders }">
+			   <c:if test="${order.isOverdue}">
 				<tr>
-					<th class="hidden" id=""></th>
-					<th>45</th>
-					<th>userid</th>
-					<th>hospital address</th>
-					<th>dep</th>
-					<th>doctor name</th>
-					<th>visit time</th>
-					<th>isOverDue</th>
-					<th>
-						<a><button class="btn btn-warning btn-xs">删除</button></a>
-					</th>
+					<th class="hidden" id="${order.bookingId}"></th>
+					<th>${order.number}</th>
+					<th>${order.userName}</th>
+					<th>${order.hospitalAddress}</th>
+					<th>${order.departmentName}</th>
+					<th>${order.doctorName}</th>
+					<th>${order.visitTime}</th>
+					<th>${order.isOverdue}</th>
+					<th><a href="deleteOrder?bookingId=${order.bookingId}"><button class="btn btn-warning btn-xs">删除</button></a></th>
 				</tr>
+				</c:if>
+				</c:forEach>
 			</tbody>
 		</table>
 	</div>

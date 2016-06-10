@@ -95,7 +95,7 @@ prefix="s"%>
     });
     $("#wallet").click(function (e) {
         e.preventDefault();
-        $("#iframe").attr('src',"wallet.html");
+        $("#iframe").attr('src',"wallet.jsp");
     });
 </script>
 </body>
