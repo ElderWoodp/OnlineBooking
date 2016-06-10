@@ -20,7 +20,7 @@
 
     <!-- findAccountAction -->
 	<s:action name="findAccount" namespace="/">
-		<s:param name="userId" value="#{user.userid}"></s:param>
+		<s:param name="userId" value="#session.user.userid"></s:param>
 	</s:action>
 
 	<!--title-->

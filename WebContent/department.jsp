@@ -131,7 +131,7 @@
 				<c:forEach var="doctor" items="${doctors }">
 
 					<!--TODO:delete this test string  -->
-					<c:out value="${doctor.scheduling}"></c:out>
+					<!--<c:out value="${doctor.scheduling}"></c:out>  -->
 
 
 					<tr class="am" data-doc-id="${doctor.id}"
@@ -193,6 +193,8 @@
 						if(timePart.substr(0, 2)<=11){//am
 							console.log("timePart: am");
 							if(ticket>0){//has ticket
+
+								//TODO:add judge timePart logic to isOverdue 
 								console.log("ticket: "+ticket);
 								 var data_x=getDayOfWeekIndex(dayOfWeek);
 								 var hrefEle=$("tr[class='am'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']');
@@ -297,15 +299,14 @@
 					<div class="modal-body">
 						<div class="container">
 							<!-- TODO: solve action path-->
-							<form method="get" class="form-group"
-								role="form">
+							<form method="get" class="form-group" role="form">
 								<!--show doctor info; current date; morning or afternoon -->
 								<div class="order_pre_info">
-								    <label id="docId" class="hidden"></label>
-									<span class="">医生：</span><label id="doc_name" class="text-info"></label><br />
-									<span>预约日期：</span><label id="visitTime" class="text-info"></label><br />
-									<span>挂号费：</span><label id="doc_fee" class="text-info"></label><span>元</span><br />
-									<span>时间：</span><label id="am_or_pm" class="text-info"></label>
+									<label id="docId" class="hidden"></label> <span class="">医生：</span><label
+										id="doc_name" class="text-info"></label><br /> <span>预约日期：</span><label
+										id="visitTime" class="text-info"></label><br /> <span>挂号费：</span><label
+										id="doc_fee" class="text-info"></label><span>元</span><br /> <span>时间：</span><label
+										id="am_or_pm" class="text-info"></label>
 								</div>
 								<div class="btn-group-vertical " role="radiogroup">
 									<hr />
@@ -344,8 +345,8 @@
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>						
-						<button type="button" class="btn btn-primary"  id="submit-order" >确定</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" id="submit-order">确定</button>
 					</div>
 				</div>
 			</div>
@@ -469,14 +470,14 @@
 												var time = $(".radio-inline input:radio:checked").val();
  												var visitTime = $("#visitTime").text()+" "+time;
 
- 												alert("${user.userid}"+docId+"\n"+visitTime); 
+ 												/* alert("${user.userid}"+docId+"\n"+visitTime); */  												
  												if("${user!=null}"){
  												var turnForm = document.createElement("form");   
  												 //一定要加入到body中！！   
  												 document.body.appendChild(turnForm);
  												 turnForm.method = 'get';
- 												 turnForm.action = 'confirmOrder';
- 												 turnForm.target = '_blank'; 
+ 												 turnForm.action = 'confirmOrder'; 												 
+ 												 /*  turnForm.target = '_blank'; */
  												 //创建隐藏表单
  												var userIdArea = document.createElement("input");
  												    userIdArea.setAttribute("name","userId");
@@ -500,6 +501,8 @@
 											        turnForm.appendChild(visitTimeArea);
   											        												   												 
  												    turnForm.submit();
+ 												  
+ 												    
  												    
  												}else{
                                                        //jump to login.jsp

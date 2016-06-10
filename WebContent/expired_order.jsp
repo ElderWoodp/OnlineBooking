@@ -24,7 +24,7 @@
 
 	<!-- findOrdersAction -->
 	<s:action name="findOrders" namespace="/">
-		<s:param name="userId" value="#{user.userid}"></s:param>
+		<s:param name="userId" value="#session.user.userid"></s:param>
 	</s:action>
 	
 	<div class="container-fluid">

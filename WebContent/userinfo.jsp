@@ -2,6 +2,7 @@
 pageEncoding="UTF-8"%> <%@ taglib prefix="c"
 uri="http://java.sun.com/jsp/jstl/core"%> <%@ taglib uri="/struts-tags"
 prefix="s"%>
+<%session.setAttribute("user.userid", "#{user.userid}"); %>
 <!DOCTYPE html>
 <html>
 <head>
