@@ -2,12 +2,17 @@
 OnlineBooking是基于Struts2 + Hibernate + Spring的在线预约系统
 
 # PreView
-<img src="/art/index.jpg"/>
-<img src="/art/hospital.jpg"/>
-<img src="/art/department.jpg"/>
-<img src="/art/confirm_order.jpg"/>
-<img src="/art/userinfo.jpg"/>
-
+主页
+<img src="/art/index.PNG" alt="index.PNG"/>
+医院
+<img src="/art/hospital.PNG" alt="hospital.PNG"/>
+科室
+<img src="/art/department.PNG" alt="department.PNG"/>
+确认订单
+<img src="/art/confirm_order.PNG" alt="confirm_order.PNG"/>
+用户信息
+<img src="/art/userinfo.PNG" alt="userinfo.PNG"/>
+更多截图在``art文件夹``
 # Dev Tools and Technologies
 - IDE: Eclipse MAR2.0 + MySQL Workbench
 - Framework:Struts2.1 + Hibernate3.0 + Spring3.0 + JQuery1.11.3 + Bootstrap3.0 + Ajax
