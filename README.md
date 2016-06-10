@@ -50,7 +50,21 @@ File->Import->Existing Projects into Workspace->set root diretory->browser->...
 > 帐号名:1234@qq.com
   密码：111111
   
-### 6.部署运行
+### 6.配置数据库连接
+在``WebContent/WEB-INF/applicationContext.xml``中配置:
+
+``` xml
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://127.0.0.1:3306/onlinebooking">
+		</property>
+		<property name="username" value="your-account"></property>
+		<property name="password" value="your-password"></property>
+	</bean>
+```
+
+### 7.部署运行
 请务必保证联网环境,否则项目无法启动。
 正常预约流程：``主页``->``用户登陆``->``找医院``->``选择某医院``->``在某医院中选择某科室``->``在科室列表点击某医生预约按钮``->``选择预约时间段``->``付费成功``->``跳转到个人信息界面``：
 
@@ -71,3 +85,8 @@ File->Import->Existing Projects into Workspace->set root diretory->browser->...
 - #1[隐患]hospistal数据库表使用了describe保留字段，写操作会报错(虽然暂时没有写操作)
 - #2[缺陷]医生如果在当天有排班，即使预约时间已过期，仍然可以进行预约
 - #3断网情况下该项目无法部署运行，原因是：applicationContext.xml中spring版本http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 与jar包版本spring2.+不对应，必须联网更新schema
+
+# LICENSE
+The MIT License (MIT)
+
+Copyright (c) 2016 wdpm & ElderWoodp
