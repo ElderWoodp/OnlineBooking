@@ -31,6 +31,7 @@ public class ConfirmOrderAction extends ActionSupport {
 		int userId = (int)stack.findValue("userId");
 		int docId = (int)stack.findValue("docId");
 		String visitTime = (String)stack.findValue("visitTime");
+		visitTime = "2016/06/14 周二 15:00-16:00";
 		
 		System.out.println(userId);
 		System.out.println(docId);
@@ -91,6 +92,8 @@ public class ConfirmOrderAction extends ActionSupport {
 			//新添加一条订单记录
 			Date d = new Date();
 			SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+			String vtDay = visitTime.split(" ")[0];
+			d = formatter.parse(vtDay);
 			String date = formatter.format(d);
 			System.out.println(date);
 			int count = 0;
