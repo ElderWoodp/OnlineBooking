@@ -205,10 +205,10 @@
 						//confirm timePart is am or pm
 						if(timePart.substr(0, 2)<=11){//am
 							console.log("timePart: am");
-							console.log(compareTimeSegment(timePart));
+							//console.log(compareTimeSegment(timePart));
 							if(ticket>0){//has ticket
 
-								//TODO:add judge timePart logic to isOverdue 
+								//TODO:add judge timePart logic on current day to decide whether is isOverdue 
 								console.log("ticket: "+ticket);
 								 var data_x=getDayOfWeekIndex(dayOfWeek);
 								 var hrefEle=$("tr[class='am'][data-doc-id='${doctor.id}']").find('.order-time[data-x='+data_x+']');
@@ -234,7 +234,7 @@
 									}
 						}else{//pm
 							console.log("timePart: pm");
-							console.log(compareTimeSegment(timePart));
+							//console.log(compareTimeSegment(timePart));
 							if(ticket>0){//has remaining ticket
 								console.log("ticket: "+ticket);
 								var data_x=getDayOfWeekIndex(dayOfWeek);
@@ -496,29 +496,27 @@
  												 //创建隐藏表单
  												var userIdArea = document.createElement("input");
  												    userIdArea.setAttribute("name","userId");
- 												   userIdArea.setAttribute("id","userId");
- 												  userIdArea.setAttribute("type","hidden");
- 												 userIdArea.setAttribute("value","${user.userid}");
+ 												    userIdArea.setAttribute("id","userId");
+ 												    userIdArea.setAttribute("type","hidden");
+ 												    userIdArea.setAttribute("value","${user.userid}");
  											        turnForm.appendChild(userIdArea);
  											        
  	 											var docIdArea = document.createElement("input");
- 	 											docIdArea.setAttribute("id","docId");
- 	 											docIdArea.setAttribute("name","docId");
- 	 											docIdArea.setAttribute("type","hidden");
- 	 											docIdArea.setAttribute("value",docId);
+	 	 											docIdArea.setAttribute("id","docId");
+	 	 											docIdArea.setAttribute("name","docId");
+	 	 											docIdArea.setAttribute("type","hidden");
+	 	 											docIdArea.setAttribute("value",docId);
   											        turnForm.appendChild(docIdArea);
   											        
 	 	 										var visitTimeArea = document.createElement("input");
-	 	 										visitTimeArea.setAttribute("id","visitTime");
-	 	 										visitTimeArea.setAttribute("name","visitTime");
-	 	 										visitTimeArea.setAttribute("type","hidden");
-	 	 										visitTimeArea.setAttribute("value",visitTime);
+		 	 										visitTimeArea.setAttribute("id","visitTime");
+		 	 										visitTimeArea.setAttribute("name","visitTime");
+		 	 										visitTimeArea.setAttribute("type","hidden");
+		 	 										visitTimeArea.setAttribute("value",visitTime);
 											        turnForm.appendChild(visitTimeArea);
   											        												   												 
  												    turnForm.submit();
- 												  
- 												    
- 												    
+ 												   												     												    
  												}else{
                                                        //jump to login.jsp
  	 												}
